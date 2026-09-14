@@ -3177,8 +3177,8 @@ body {
   }
 }
 
-/* MOBILE PHONES (Max 600px) */
-@media (max-width: 600px) {
+/* MOBILE PHONES & TABLETS (Max 768px) */
+@media (max-width: 768px) {
   .navbar {
     height: 72px;
     padding: 0 14px;
