@@ -76,7 +76,7 @@ export default function Navbar() {
 
           <div className="mobileMenuFooter">
             <Link to="/contact" className="goldBtn fullWidthBtn" onClick={() => setMenuOpen(false)}>
-              Schedule VIP Visit →
+              Schedule Site Visit →
             </Link>
             <a href="tel:+919876543210" className="mobileCallLink">
               📞 +91 98765 43210

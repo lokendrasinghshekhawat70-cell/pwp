@@ -115,7 +115,7 @@ export default function Services() {
   const processSteps = [
     { step: "01", title: "Discovery & Goal Setting", desc: "We understand your budget, preferred location, and investment timeline." },
     { step: "02", title: "Curated Shortlisting", desc: "We present verified options that strictly meet your criteria with video previews." },
-    { step: "03", title: "VIP Site Tour", desc: "Comfortable guided site visits with our local property specialists." },
+    { step: "03", title: "Guided Site Tour", desc: "Comfortable guided site visits with our local property specialists." },
     { step: "04", title: "Legal Title Verification", desc: "Our legal panel confirms clear titles, JDA/RERA approvals, and encumbrance reports." },
     { step: "05", title: "Registry & Handover", desc: "Smooth registration paperwork, mutation assistance, and on-ground possession." }
   ];

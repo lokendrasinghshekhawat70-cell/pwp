@@ -28,7 +28,7 @@ export default function Contact() {
         ...prev,
         inquiryType: "Property Visit",
         propertyInterest: defaultProperty,
-        message: `Interested in scheduling a VIP site visit for ${defaultProperty}.`
+        message: `Interested in scheduling a site visit for ${defaultProperty}.`
       }));
     } else if (defaultService) {
       setFormData((prev) => ({
@@ -91,7 +91,7 @@ export default function Contact() {
           <p className="smallTitle">✨ RAJU VERMA • GOKUL KRIPA SALES & MARKETING</p>
           <h1>Where Vision <span>Becomes Value.</span></h1>
           <p className="headerSubtext">
-            PLOT WITH PROPERTY — Own Your Legacy. Connect directly with <strong>Raju Verma</strong> to schedule a complimentary VIP site visit for JDA Approved & RERA Registered townships.
+            PLOT WITH PROPERTY — Own Your Legacy. Connect directly with <strong>Raju Verma</strong> to schedule a complimentary site visit for JDA Approved & RERA Registered townships.
           </p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function Contact() {
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
                     >
-                      <option value="Property Visit">Book VIP Site Visit (Chauffeur Available)</option>
+                      <option value="Property Visit">Book Site Visit (Free Cab Available)</option>
                       <option value="Plot Purchase">Residential Plot / Gated Land</option>
                       <option value="Commercial Space">Commercial Land / Showroom</option>
                       <option value="Service Consultation">Legal & RERA Title Due Diligence</option>
@@ -349,7 +349,7 @@ export default function Contact() {
                 </div>
 
                 <button type="submit" className="goldBtn submitBtn">
-                  Submit Inquiry & Confirm VIP Visit →
+                  Submit Inquiry & Confirm Visit →
                 </button>
               </form>
             )}

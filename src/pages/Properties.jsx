@@ -448,7 +448,7 @@ export default function Properties() {
                   className="goldBtn"
                   onClick={() => setSelectedProperty(null)}
                 >
-                  Schedule VIP Site Visit
+                  Schedule Site Visit
                 </Link>
                 <a
                   href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hello PWP, I am interested in "${selectedProperty.title}". Please share complete documentation.`)}`}

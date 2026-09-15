@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -115,6 +115,99 @@ export default function Home() {
     }
   ];
 
+  const [selectedTownshipIndex, setSelectedTownshipIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
+  const heroTownships = [
+    {
+      id: "jaipur",
+      city: "Jaipur",
+      title: "Royal Palm Smart Township",
+      corridor: "Ajmer Road & Ring Road Corridor",
+      price: "₹18.50 Lakh",
+      priceUnit: "onwards",
+      growth: "+18% YoY Growth",
+      badge: "JDA APPROVED • IMMEDIATE REGISTRY",
+      tag: "🔥 85% SOLD OUT",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+      features: ["60ft - 100ft Sector Roads", "Underground Electrification", "Physical Demarcation & Patta"]
+    },
+    {
+      id: "navi-mumbai",
+      city: "Navi Mumbai",
+      title: "Aerotropolis Gold Enclave",
+      corridor: "Panvel & Airport Growth Corridor",
+      price: "₹42.00 Lakh",
+      priceUnit: "onwards",
+      growth: "+22% YoY Growth",
+      badge: "MEGA INFRA • HIGH ROI",
+      tag: "⭐ AIRPORT PROXIMITY",
+      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85",
+      features: ["15 Mins to New International Airport", "Clear Title Freehold Land", "High Capital Appreciation"]
+    },
+    {
+      id: "bhiwadi",
+      city: "Bhiwadi",
+      title: "Industrial Horizon Township",
+      corridor: "Alwar Highway & NCR Industrial Belt",
+      price: "₹14.80 Lakh",
+      priceUnit: "onwards",
+      growth: "+16% YoY Growth",
+      badge: "RERA REGISTERED • NCR ZONE",
+      tag: "⚡ HIGH RENTAL YIELD",
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
+      features: ["Direct Highway Connectivity", "DMIC Logistics Corridor", "Gated Security & Water Line"]
+    },
+    {
+      id: "kishangarh",
+      city: "Kishangarh & Ajmer",
+      title: "Emerald Expressway Hub",
+      corridor: "Expressway & Marble City Belt",
+      price: "₹16.20 Lakh",
+      priceUnit: "onwards",
+      growth: "+15% YoY Growth",
+      badge: "HIGHWAY FRONTAGE • INSTANT PATTA",
+      tag: "💎 STRATEGIC HUB",
+      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=85",
+      features: ["National Highway Frontage", "Airport Corridor Access", "Rapid Commercial Expansion"]
+    }
+  ];
+
+  // Auto slide featured townships every 5.5 seconds unless paused
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const interval = setInterval(() => {
+      setSelectedTownshipIndex((prev) => (prev + 1) % heroTownships.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isAutoPlay, heroTownships.length]);
+
+  const nextTownship = () => {
+    setSelectedTownshipIndex((prev) => (prev + 1) % heroTownships.length);
+  };
+
+  const prevTownship = () => {
+    setSelectedTownshipIndex((prev) => (prev - 1 + heroTownships.length) % heroTownships.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextTownship();
+      } else {
+        prevTownship();
+      }
+    }
+    setTouchStartX(null);
+  };
+
   return (
     <div className="pageContainer">
       {/* FLOATING QUICK CONTACT PILL */}
@@ -131,97 +224,275 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="hero">
+        <div className="heroGlowSphere heroGlowSphere1"></div>
+        <div className="heroGlowSphere heroGlowSphere2"></div>
+        <div className="heroGridPattern"></div>
         <div className="heroOverlay"></div>
 
-        <div className="heroContent">
-          {/* EXPERT BADGE */}
-          <div className="heroExpertBadge">
-            <span className="expertStar">✨</span>
-            <span className="expertName">RAJU VERMA</span>
-            <span className="badgeDivider">|</span>
-            <span className="expertAffil">Real Estate Expert • Gokul Kripa Sales & Marketing</span>
-          </div>
+        <div className="heroContainer">
+          {/* LEFT COLUMN: Authority & Headings */}
+          <div className="heroContent">
+            {/* Trust & Authority Pill */}
+            <div className="heroPreBadge">
+              <span className="livePulseDot"></span>
+              <span className="heroPreBadgeText">RAJASTHAN & MAHARASHTRA'S PREMIER LAND ADVISORY</span>
+            </div>
 
-          <p className="heroPillMotto">
-            INVEST • BUILD • GROW
-          </p>
-
-          <h1>
-            Where Legacy Takes Shape.
-            <br />
-            <span>Where Vision Becomes Value.</span>
-          </h1>
-
-          <p className="heroSubMotto">
-            PLOT WITH PROPERTY — Own Your Legacy.
-          </p>
-
-          <p className="heroText">
-            Discover 100% JDA Approved & RERA Registered Townships across <strong>Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh</strong> with unmatched legal transparency and high ROI.
-          </p>
-
-          {/* LOCATIONS TICKER BAR */}
-          <div className="locationsTicker">
-            <span className="locPin">📍</span>
-            <span className="locTitle">PROJECTS IN:</span>
-            <span className="locTag">JAIPUR</span>
-            <span className="locDot">•</span>
-            <span className="locTag">NAVI MUMBAI</span>
-            <span className="locDot">•</span>
-            <span className="locTag">BHIWADI</span>
-            <span className="locDot">•</span>
-            <span className="locTag">AJMER</span>
-            <span className="locDot">•</span>
-            <span className="locTag">KISHANGARH</span>
-          </div>
-
-          <div className="heroButtons">
-            <Link to="/properties" className="goldBtn">
-              Explore Available Properties →
-            </Link>
-
-            <Link to="/contact" className="outlineBtn">
-              Schedule VIP Site Visit
-            </Link>
-          </div>
-
-          <div className="heroCertBadges">
-            <div className="certItem">
-              <span className="certIcon">✅</span>
-              <div>
-                <strong>JDA & RERA Registered</strong>
-                <p>100% government approved townships</p>
+            {/* Expert Verification Badge */}
+            <div className="heroExpertBadge">
+              <div className="expertAvatarWrapper">
+                <img src="/emblem.png" alt="Raju Verma Emblem" className="expertAvatarEmblem" />
+                <span className="verifiedStar">✓</span>
+              </div>
+              <div className="expertInfoCol">
+                <div className="expertNameRow">
+                  <span className="expertName">RAJU VERMA</span>
+                  <span className="expertRating">★★★★★ 4.9/5 (480+ Investors)</span>
+                </div>
+                <span className="expertAffil">Chief Real Estate Advisor • Gokul Kripa Sales & Marketing</span>
               </div>
             </div>
-            <div className="certItem">
-              <span className="certIcon">📜</span>
-              <div>
-                <strong>Instant Registry & Patta</strong>
-                <p>On-ground physical boundary demarcation</p>
+
+            {/* Hero Master Title */}
+            <h1 className="heroMasterTitle">
+              Where <span className="goldGradientText">Legacy</span> Takes Shape.
+              <br />
+              <span className="heroMasterSubTitle">Where Vision Becomes High Value.</span>
+            </h1>
+
+            <p className="heroMottoTagline">
+              PLOT WITH PROPERTY — Secure Your Future With Prime JDA & RERA Approved Land.
+            </p>
+
+            <p className="heroText">
+              Discover 100% government approved, clear-title freehold township plots across <strong>Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh</strong> with immediate registry, physical on-ground demarcation, and verified double-digit annual appreciation.
+            </p>
+
+            {/* Interactive Location Selector Chips */}
+            <div className="heroCitySelector">
+              <div className="citySelectHeader">
+                <span className="citySelectLabel">EXPLORE GROWTH CORRIDOR:</span>
+                <span className="citySwipeHint">Tap or swipe cards ⇄</span>
+              </div>
+              <div className="cityPillGroup">
+                {heroTownships.map((t, idx) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    className={`cityPill ${selectedTownshipIndex === idx ? "active" : ""}`}
+                    onClick={() => setSelectedTownshipIndex(idx)}
+                  >
+                    📍 {t.city}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Hero CTA Buttons */}
+            <div className="heroButtons">
+              <Link to={`/properties?loc=${heroTownships[selectedTownshipIndex].city}`} className="goldBtn heroPrimaryBtn">
+                <span>Explore {heroTownships[selectedTownshipIndex].city} Townships</span>
+                <span className="btnArrow">→</span>
+              </Link>
+
+              <Link to="/contact" className="outlineBtn heroSecondaryBtn">
+                <span>📅 Schedule Site Visit</span>
+              </Link>
+
+              <a 
+                href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20${encodeURIComponent(heroTownships[selectedTownshipIndex].title)}%20in%20${heroTownships[selectedTownshipIndex].city}.`}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="heroWaQuickBtn"
+                title="Direct WhatsApp Consultation"
+              >
+                <span className="heroWaIcon">💬</span>
+                <span className="heroWaText">Chat on WhatsApp</span>
+              </a>
+            </div>
+
+            {/* Key Guarantees Grid */}
+            <div className="heroCertBadges">
+              <div className="certItem">
+                <span className="certIcon">🏛️</span>
+                <div>
+                  <strong>100% JDA & RERA Approved</strong>
+                  <p>Full Government Legal Clearance</p>
+                </div>
+              </div>
+              <div className="certItem">
+                <span className="certIcon">📜</span>
+                <div>
+                  <strong>Instant Registry & Patta</strong>
+                  <p>Immediate 100% Title Transfer</p>
+                </div>
+              </div>
+              <div className="certItem">
+                <span className="certIcon">📐</span>
+                <div>
+                  <strong>On-Ground Demarcation</strong>
+                  <p>Boundary Pillars & Sector Roads</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Interactive Luxury Showcase Deck */}
+          <div 
+            className="heroVisualDeck"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="townshipShowcaseCard"
+              onMouseEnter={() => setIsAutoPlay(false)}
+              onMouseLeave={() => setIsAutoPlay(true)}
+            >
+              {/* Card Image with overlay */}
+              <div className="townshipImgContainer">
+                <img 
+                  src={heroTownships[selectedTownshipIndex].image} 
+                  alt={heroTownships[selectedTownshipIndex].title}
+                  className="townshipImg"
+                  key={heroTownships[selectedTownshipIndex].id}
+                />
+                <div className="townshipImgOverlay"></div>
+                
+                {/* Carousel Nav Controls */}
+                <button 
+                  className="cardNavBtn cardNavPrev" 
+                  onClick={prevTownship}
+                  type="button"
+                  aria-label="Previous township"
+                >
+                  ‹
+                </button>
+                <button 
+                  className="cardNavBtn cardNavNext" 
+                  onClick={nextTownship}
+                  type="button"
+                  aria-label="Next township"
+                >
+                  ›
+                </button>
+
+                {/* Top Floating Badge */}
+                <div className="townshipTopBadge">
+                  <span className="badgeFire">{heroTownships[selectedTownshipIndex].tag}</span>
+                  <span className="badgeGrowth">{heroTownships[selectedTownshipIndex].growth}</span>
+                </div>
+
+                {/* Bottom Floating Value Pill */}
+                <div className="townshipPricePill">
+                  <span className="priceLabel">STARTING FROM</span>
+                  <span className="priceValue">{heroTownships[selectedTownshipIndex].price}</span>
+                  <span className="priceUnit">{heroTownships[selectedTownshipIndex].priceUnit}</span>
+                </div>
+
+                {/* Dot Indicators on Image */}
+                <div className="townshipDots">
+                  {heroTownships.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      type="button"
+                      className={`townshipDot ${selectedTownshipIndex === dotIdx ? "active" : ""}`}
+                      onClick={() => setSelectedTownshipIndex(dotIdx)}
+                      aria-label={`View township ${dotIdx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="townshipCardBody">
+                <div className="townshipMetaRow">
+                  <span className="townshipGovTag">🛡️ {heroTownships[selectedTownshipIndex].badge}</span>
+                  <span className="townshipCityTag">📍 {heroTownships[selectedTownshipIndex].city}</span>
+                </div>
+
+                <h3 className="townshipTitle">{heroTownships[selectedTownshipIndex].title}</h3>
+                <p className="townshipCorridor">🛣️ {heroTownships[selectedTownshipIndex].corridor}</p>
+
+                <div className="townshipFeaturesList">
+                  {heroTownships[selectedTownshipIndex].features.map((feat, fIdx) => (
+                    <span key={fIdx} className="townshipFeatChip">
+                      ✓ {feat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Quick Action in Card */}
+                <div className="townshipCardFooter">
+                  <Link 
+                    to={`/properties?loc=${heroTownships[selectedTownshipIndex].city}`}
+                    className="viewTownshipBtn"
+                  >
+                    Explore Plots & Layout Plans →
+                  </Link>
+                  <div className="liveAvailabilityBadge">
+                    <span className="liveGreenDot"></span>
+                    <span>Free Cab Site Visit Available</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Mini Highlight Bubble */}
+              <div className="floatingConsultantCard">
+                <div className="consultantAvatar">
+                  <img src="/emblem.png" alt="Raju Verma Emblem" />
+                </div>
+                <div className="consultantText">
+                  <div className="consultantStatus">
+                    <span className="liveGreenDot"></span>
+                    <strong>Raju Verma</strong> (Direct Advisory)
+                  </div>
+                  <p>100% Freehold • Zero Brokerage</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="heroStats">
-          <div className="statBox">
-            <h3>500+</h3>
-            <p>Verified Plots</p>
+        {/* FULL WIDTH LUXURY STATS RIBBON */}
+        <div className="heroStatsRibbon">
+          <div className="statRibbonItem">
+            <span className="statRibbonIcon">💎</span>
+            <div className="statRibbonText">
+              <h3>500+</h3>
+              <p>Verified Plots Available</p>
+            </div>
           </div>
-          <div className="statDivider"></div>
-          <div className="statBox">
-            <h3>5 Cities</h3>
-            <p>Prime Projects</p>
+          <div className="statRibbonDivider"></div>
+          <div className="statRibbonItem">
+            <span className="statRibbonIcon">📍</span>
+            <div className="statRibbonText">
+              <h3>5 Cities</h3>
+              <p>Jaipur • Mumbai • Bhiwadi • Ajmer</p>
+            </div>
           </div>
-          <div className="statDivider"></div>
-          <div className="statBox">
-            <h3>₹250Cr+</h3>
-            <p>Assets Facilitated</p>
+          <div className="statRibbonDivider"></div>
+          <div className="statRibbonItem">
+            <span className="statRibbonIcon">🏛️</span>
+            <div className="statRibbonText">
+              <h3>₹250Cr+</h3>
+              <p>Land Assets Facilitated</p>
+            </div>
           </div>
-          <div className="statDivider"></div>
-          <div className="statBox">
-            <h3>99.4%</h3>
-            <p>Happy Clients</p>
+          <div className="statRibbonDivider"></div>
+          <div className="statRibbonItem">
+            <span className="statRibbonIcon">⭐</span>
+            <div className="statRibbonText">
+              <h3>99.4%</h3>
+              <p>Investor Trust Score</p>
+            </div>
+          </div>
+          <div className="statRibbonDivider"></div>
+          <div className="statRibbonItem">
+            <span className="statRibbonIcon">🛡️</span>
+            <div className="statRibbonText">
+              <h3>100%</h3>
+              <p>JDA & RERA Approved</p>
+            </div>
           </div>
         </div>
       </section>
@@ -616,7 +887,7 @@ export default function Home() {
             <span> Starts Here.</span>
           </h2>
           <p style={{ color: "#6B7280", marginTop: "10px", maxWidth: "600px" }}>
-            Book a complimentary VIP site visit with our senior land consultants. Chauffeur pickup available in Jaipur and Gurgaon.
+            Book a complimentary site visit with our senior land consultants. Free pickup available in Jaipur and Gurgaon.
           </p>
         </div>
 

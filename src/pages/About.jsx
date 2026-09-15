@@ -20,7 +20,7 @@ export default function About() {
     {
       icon: "⚡",
       title: "Instant Demarcation & Registry",
-      desc: "From initial VIP site tour, registry documentation, physical corner demarcation pillars to mutation, our concierge team handles every single detail."
+      desc: "From initial guided site tour, registry documentation, physical corner demarcation pillars to mutation, our advisory team handles every single detail."
     }
   ];
 
@@ -137,7 +137,7 @@ export default function About() {
               <div className="checkItem">
                 <span className="checkIcon">✔</span>
                 <div>
-                  <strong>Chauffeur-Driven VIP Site Visits</strong>
+                  <strong>Guided Free Cab Site Visits</strong>
                   <p>Personalized guided visits with our local property analysts all 7 days a week.</p>
                 </div>
               </div>

@@ -47,7 +47,7 @@ export default function MobileBottomBar() {
         }
       >
         <span className="mBottomIcon">📅</span>
-        <span className="mBottomLabel">VIP Visit</span>
+        <span className="mBottomLabel">Site Visit</span>
       </NavLink>
     </aside>
   );
