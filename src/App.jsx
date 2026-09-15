@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import MobileBottomBar from "./components/MobileBottomBar";
 import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
@@ -28,7 +27,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <MobileBottomBar />
       </div>
     </Router>
   );
