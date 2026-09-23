@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import rajuVermaImg from "../assets/team/raju_verma.jpg";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -28,46 +29,42 @@ export default function Contact() {
         ...prev,
         inquiryType: "Property Visit",
         propertyInterest: defaultProperty,
-        message: `Interested in scheduling a site visit for ${defaultProperty}.`
+        message: `Interested in ${defaultProperty}. Please arrange a complimentary site visit and share patta documents.`
       }));
     } else if (defaultService) {
       setFormData((prev) => ({
         ...prev,
         inquiryType: "Service Consultation",
         propertyInterest: defaultService,
-        message: `Requesting legal and strategic consultation for ${defaultService}.`
+        message: `Interested in ${defaultService}. Please arrange legal and strategic consultation.`
       }));
     }
   }, [defaultProperty, defaultService]);
 
-  // Handle phone change (strict 10 digits numeric only)
   const handlePhoneChange = (e) => {
-    const rawValue = e.target.value.replace(/\D/g, ""); // remove non-digits
+    const rawValue = e.target.value.replace(/\D/g, "");
     if (rawValue.length <= 10) {
       setFormData((prev) => ({ ...prev, phone: rawValue }));
-      if (rawValue.length > 0 && rawValue.length < 10) {
-        setPhoneError("Please enter complete 10-digit mobile number");
+      if (rawValue.length === 10) {
+        setPhoneError("");
+      } else if (rawValue.length > 0) {
+        setPhoneError("Please enter a valid 10-digit mobile number");
       } else {
         setPhoneError("");
       }
     }
   };
 
-  // Helper to count words
   const getWordCount = (text) => {
     const trimmed = text.trim();
     return trimmed ? trimmed.split(/\s+/).length : 0;
   };
 
-  // Handle message change with word limit
   const handleMessageChange = (e) => {
     const text = e.target.value;
-    const words = text.trim().split(/\s+/);
-    if (text.trim() === "" || words.length <= MAX_WORDS) {
+    const words = text.trim() ? text.trim().split(/\s+/) : [];
+    if (words.length <= MAX_WORDS) {
       setFormData((prev) => ({ ...prev, message: text }));
-    } else {
-      const limitedText = words.slice(0, MAX_WORDS).join(" ");
-      setFormData((prev) => ({ ...prev, message: limitedText }));
     }
   };
 
@@ -83,135 +80,120 @@ export default function Contact() {
   };
 
   return (
-    <div className="pageContainer">
-      {/* PAGE HEADER */}
-      <section className="pageHeader">
-        <div className="headerOverlay"></div>
-        <div className="headerContent">
-          <p className="smallTitle">✨ RAJU VERMA • GOKUL KRIPA SALES & MARKETING</p>
-          <h1>Where Vision <span>Becomes Value.</span></h1>
-          <p className="headerSubtext">
-            PLOT WITH PROPERTY — Own Your Legacy. Connect directly with <strong>Raju Verma</strong> to schedule a complimentary site visit for JDA Approved & RERA Registered townships.
+    <div className="pageContainer mbThemePage">
+      {/* FLOATING QUICK CONTACT PILL */}
+      <div className="floatingContactPill">
+        <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20JDA%20plots." target="_blank" rel="noopener noreferrer" className="floatWaBtn">
+          <span className="waIcon">💬</span>
+          <span className="waText">Chat on WhatsApp</span>
+        </a>
+        <a href="tel:+919876543210" className="floatCallBtn">
+          <span className="callIcon">📞</span>
+          <span className="callText">+91 98765 43210</span>
+        </a>
+      </div>
+
+      {/* CONTACT PORTAL HEADER */}
+      <section className="mbPortalHeader">
+        <div className="mbPortalHeaderInner">
+          <div className="mbPortalBadge">
+            <span className="mbLiveDot"></span>
+            <span>Direct Advisory • Raju Verma (Gokul Kripa Sales & Marketing)</span>
+          </div>
+          <h1>Connect Directly With Our Land Specialists</h1>
+          <p>
+            Book a complimentary AC cab site visit for your family, request statutory JDA/RERA documentation, or consult Raju Verma directly.
           </p>
         </div>
       </section>
 
-      {/* CONTACT MAIN SECTION */}
-      <section className="contactMainSection">
-        {/* MOBILE INSTANT CONNECT ACTION BAR */}
-        <div className="mobileContactQuickRow">
-          <a
-            href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20JDA/RERA%20township%20plots."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mQuickWaBtn"
-          >
-            <span className="mQuickIcon">💬</span>
-            <div className="mQuickText">
-              <strong>WhatsApp Chat</strong>
-              <small>Instant Response</small>
-            </div>
-          </a>
-          <a href="tel:+919876543210" className="mQuickCallBtn">
-            <span className="mQuickIcon">📞</span>
-            <div className="mQuickText">
-              <strong>Call Advisor</strong>
-              <small>+91 98765 43210</small>
-            </div>
-          </a>
-        </div>
+      {/* CONTACT FORM & INFO SECTION */}
+      <section className="mbContactMainSection">
+        <div className="mbContactGrid">
+          {/* Left Column: Direct Info Card */}
+          <div className="mbContactInfoCol">
+            <div className="mbAdvisoryCard">
+              <div className="mbAdvisorHeader">
+                <img src={rajuVermaImg} alt="Raju Verma" className="mbAdvisorPortrait" />
+                <div>
+                  <span className="mbVerifiedTag">✓ Certified Real Estate Advisor</span>
+                  <h3>Raju Verma</h3>
+                  <p>Chief Real Estate Advisor • Gokul Kripa</p>
+                </div>
+              </div>
 
-        <div className="contactGrid">
-          {/* CONTACT INFO SIDEBAR */}
-          <div className="contactInfoCard">
-            <p className="goldText">REACH US DIRECTLY</p>
-            <h2>Connect With Raju Verma</h2>
-            <p className="contactSubtitle">
-              Real Estate Expert | Gokul Kripa Sales & Marketing. Advisory desk for Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh.
-            </p>
-
-            {/* ASSURANCE QUOTE BOX */}
-            <div className="contactAssuranceBox">
-              <span className="assuranceQuoteMark">“</span>
-              <p>
-                Invest. Build. Grow. Every plot represents a lasting family legacy. We guarantee 100% legal due diligence, transparent government registry, and on-ground demarcation.
+              <p className="mbAdvisorDesc">
+                Specialist advisory for 100% JDA-approved and RERA-registered master townships across Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh.
               </p>
-              <div className="assuranceAuthor">
-                <strong>Raju Verma | Gokul Kripa Sales & Marketing</strong>
-                <span>Jaipur • Navi Mumbai • Bhiwadi • Ajmer • Kishangarh</span>
-              </div>
-            </div>
 
-            <div className="contactMethodList">
-              <a href="tel:+919876543210" className="contactMethodItem">
-                <div className="methodIcon">📞</div>
-                <div>
-                  <strong>Direct Advisory Line</strong>
-                  <p>+91 98765 43210 / +91 98290 12345</p>
+              <div className="mbContactPillsList">
+                <a href="tel:+919876543210" className="mbContactLinkItem">
+                  <span className="mbItemIcon">📞</span>
+                  <div>
+                    <span className="mbItemLabel">Direct Advisory Helpline</span>
+                    <strong>+91 98765 43210</strong>
+                  </div>
+                </a>
+
+                <a 
+                  href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20would%20like%20to%20book%20a%20site%20visit."
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="mbContactLinkItem mbWaItem"
+                >
+                  <span className="mbItemIcon">💬</span>
+                  <div>
+                    <span className="mbItemLabel">WhatsApp Assistance Desk</span>
+                    <strong>+91 98765 43210</strong>
+                  </div>
+                </a>
+
+                <div className="mbContactLinkItem">
+                  <span className="mbItemIcon">✉️</span>
+                  <div>
+                    <span className="mbItemLabel">Official Email</span>
+                    <strong>contact@plotwithproperty.com</strong>
+                  </div>
                 </div>
-              </a>
 
-              <a
-                href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20JDA%20approved%20plots."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contactMethodItem waItem"
-              >
-                <div className="methodIcon">💬</div>
-                <div>
-                  <strong>WhatsApp Concierge (Instant Response)</strong>
-                  <p>Township Layouts, GPS Pins & Brochures</p>
+                <div className="mbContactLinkItem">
+                  <span className="mbItemIcon">📍</span>
+                  <div>
+                    <span className="mbItemLabel">Headquarters</span>
+                    <strong>Plot With Property, Main Ajmer Road, Jaipur, Rajasthan</strong>
+                  </div>
                 </div>
-              </a>
+              </div>
 
-              <a href="mailto:contact@plotwithproperty.com" className="contactMethodItem">
-                <div className="methodIcon">✉️</div>
+              <div className="mbFreeCabNotice">
+                <span className="mbCabIcon">🚗</span>
                 <div>
-                  <strong>Official Email Inquiries</strong>
-                  <p>contact@plotwithproperty.com</p>
+                  <strong>Complimentary Doorstep AC Cab Site Visit</strong>
+                  <p>Free doorstep family pickup and drop for transparent on-ground site inspection.</p>
                 </div>
-              </a>
-            </div>
-
-            {/* OFFICES */}
-            <div className="officeBranches">
-              <h4>Project Network (5 Key Cities)</h4>
-              <div className="branchItem">
-                <strong>📍 Jaipur Projects:</strong>
-                <p>Main Ajmer Road & Jagatpura Ring Road Corridors</p>
-              </div>
-              <div className="branchItem">
-                <strong>📍 Navi Mumbai Projects:</strong>
-                <p>Panvel Airport Growth Corridor & NA Investment Plots</p>
-              </div>
-              <div className="branchItem">
-                <strong>📍 Bhiwadi, Ajmer & Kishangarh:</strong>
-                <p>High-Yield Industrial & Expressway Gated Townships</p>
               </div>
             </div>
           </div>
 
-          {/* CONTACT FORM */}
-          <div className="contactFormCard">
-            {submitted ? (
-              <div className="successMessageBox">
-                <div className="successIcon">🎉</div>
-                <h3>Inquiry Submitted Successfully!</h3>
-                <p>
-                  Thank you, <strong>{formData.fullName}</strong>. Our senior property advisor will call you at{" "}
-                  <strong>+91 {formData.phone}</strong> within 15 minutes to confirm your site visit details.
-                </p>
-                <div className="successActions">
-                  <a
-                    href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hello PWP, I just submitted an inquiry for ${formData.propertyInterest || formData.inquiryType}. My name is ${formData.fullName}.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="goldBtn"
-                  >
-                    💬 Chat on WhatsApp Now
-                  </a>
-                  <button
-                    className="outlineBtn"
+          {/* Right Column: Interactive Form */}
+          <div className="mbContactFormCol">
+            <div className="mbFormCard">
+              <div className="mbFormHeader">
+                <h2>Schedule Site Visit & Inquiry</h2>
+                <p>Fill in your details below for prompt advisory and township layout plans.</p>
+              </div>
+
+              {submitted ? (
+                <div className="mbSuccessMessage">
+                  <div className="mbSuccessIcon">✅</div>
+                  <h3>Inquiry Successfully Submitted!</h3>
+                  <p>
+                    Thank you, <strong>{formData.fullName}</strong>. Raju Verma and our senior advisory team have received your request for <strong>{formData.location}</strong>.
+                  </p>
+                  <p className="mbSuccessSub">Our representative will call you shortly on <strong>+91 {formData.phone}</strong> to confirm your site visit schedule.</p>
+                  <button 
+                    type="button" 
+                    className="mbPrimaryGoldBtn" 
                     onClick={() => {
                       setSubmitted(false);
                       setFormData({
@@ -219,140 +201,179 @@ export default function Contact() {
                         phone: "",
                         email: "",
                         location: "Jaipur",
-                        inquiryType: "General Inquiry",
+                        inquiryType: "Property Visit",
                         propertyInterest: "",
                         preferredDate: "",
                         message: ""
                       });
-                      setPhoneError("");
                     }}
                   >
-                    Send Another Inquiry
+                    Submit Another Inquiry
                   </button>
                 </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="inquiryForm">
-                <h3>Schedule Site Visit / Inquire</h3>
-                <p className="formSubtitle">Fill out your details for instant advisory callback.</p>
-
-                <div className="formRow">
-                  <div className="formGroup">
-                    <label>Full Name *</label>
-                    <input
-                      type="text"
-                      required
-                      maxLength={50}
-                      placeholder="e.g. Ramesh Verma"
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="formGroup">
-                    <label>Indian Mobile Number *</label>
-                    <div className={`phoneInputWrapper ${phoneError ? "inputError" : ""}`}>
-                      <span className="phonePrefix">🇮🇳 +91</span>
+              ) : (
+                <form onSubmit={handleSubmit} className="mbFormInner">
+                  <div className="mbFormRow">
+                    <div className="mbFormGroup">
+                      <label>Full Name <span className="mbReq">*</span></label>
                       <input
-                        type="tel"
+                        type="text"
                         required
-                        inputMode="numeric"
-                        pattern="[0-9]{10}"
-                        maxLength={10}
-                        placeholder="9876543210"
-                        value={formData.phone}
-                        onChange={handlePhoneChange}
+                        placeholder="e.g. Ramesh Verma"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="mbTextInput"
                       />
                     </div>
-                    {phoneError && <span className="fieldErrorText">{phoneError}</span>}
-                  </div>
-                </div>
 
-                <div className="formRow">
-                  <div className="formGroup">
-                    <label>Email Address</label>
-                    <input
-                      type="email"
-                      maxLength={60}
-                      placeholder="e.g. ramesh@gmail.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    <div className="mbFormGroup">
+                      <label>Indian Mobile Number (10 Digits) <span className="mbReq">*</span></label>
+                      <div className="mbPhoneInputWrap">
+                        <span className="mbPhonePrefix">+91</span>
+                        <input
+                          type="tel"
+                          required
+                          maxLength="10"
+                          placeholder="9876543210"
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          className="mbTextInput mbPhoneField"
+                        />
+                      </div>
+                      {phoneError && <span className="mbInputError">{phoneError}</span>}
+                    </div>
+                  </div>
+
+                  <div className="mbFormRow">
+                    <div className="mbFormGroup">
+                      <label>Email Address (Optional)</label>
+                      <input
+                        type="email"
+                        placeholder="e.g. ramesh@gmail.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="mbTextInput"
+                      />
+                    </div>
+
+                    <div className="mbFormGroup">
+                      <label>Select Location / City <span className="mbReq">*</span></label>
+                      <select
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        className="mbSelectInput"
+                      >
+                        <option value="Jaipur">Jaipur (Ajmer Road, Ring Road, Jagatpura)</option>
+                        <option value="Navi Mumbai">Navi Mumbai (Panvel, Airport Zone)</option>
+                        <option value="Bhiwadi">Bhiwadi (Alwar Highway, NCR Belt)</option>
+                        <option value="Ajmer">Ajmer (Expressway, Pushkar Bypass)</option>
+                        <option value="Kishangarh">Kishangarh (NH-8 Marble City)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="mbFormRow">
+                    <div className="mbFormGroup">
+                      <label>Inquiry Classification</label>
+                      <select
+                        value={formData.inquiryType}
+                        onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                        className="mbSelectInput"
+                      >
+                        <option value="Property Visit">🚗 Free AC Cab Site Visit</option>
+                        <option value="Service Consultation">⚖️ 30-Year Title Search & Legal Verification</option>
+                        <option value="Bank Loan Assistance">🏦 80% Bank Loan Support (SBI/HDFC)</option>
+                        <option value="General Inquiry">💬 Township Pricing & Layout Details</option>
+                      </select>
+                    </div>
+
+                    <div className="mbFormGroup">
+                      <label>Preferred Visit Date</label>
+                      <input
+                        type="date"
+                        value={formData.preferredDate}
+                        onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                        className="mbTextInput"
+                      />
+                    </div>
+                  </div>
+
+                  {formData.propertyInterest && (
+                    <div className="mbFormGroup">
+                      <label>Selected Property / Service</label>
+                      <input
+                        type="text"
+                        value={formData.propertyInterest}
+                        readOnly
+                        className="mbTextInput mbReadOnlyInput"
+                      />
+                    </div>
+                  )}
+
+                  <div className="mbFormGroup">
+                    <div className="mbLabelWithCounter">
+                      <label>Message / Specific Dimension Requirements</label>
+                      <span className="mbWordCount">{wordCount}/{MAX_WORDS} words</span>
+                    </div>
+                    <textarea
+                      rows="3"
+                      placeholder="Mention your requirements, preferred plot size, budget or questions..."
+                      value={formData.message}
+                      onChange={handleMessageChange}
+                      className="mbTextarea"
                     />
                   </div>
 
-                  <div className="formGroup">
-                    <label>Preferred Location / City *</label>
-                    <select
-                      value={formData.location}
-                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    >
-                      <option value="Jaipur">Jaipur (Ajmer Rd, Jagatpura, Ring Rd)</option>
-                      <option value="Navi Mumbai">Navi Mumbai (Panvel, Airport Zone)</option>
-                      <option value="Bhiwadi">Bhiwadi (NCR Industrial Belt)</option>
-                      <option value="Ajmer">Ajmer (Expressway & Pushkar Bypass)</option>
-                      <option value="Kishangarh">Kishangarh (Marble City Highway)</option>
-                    </select>
-                  </div>
-                </div>
+                  <button type="submit" className="mbFormSubmitBtn">
+                    <span>🚗 Book Free Site Visit & Inquire</span>
+                    <span>→</span>
+                  </button>
 
-                <div className="formRow">
-                  <div className="formGroup">
-                    <label>Inquiry Classification</label>
-                    <select
-                      value={formData.inquiryType}
-                      onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                    >
-                      <option value="Property Visit">Book Site Visit (Free Cab Available)</option>
-                      <option value="Plot Purchase">Residential Plot / Gated Land</option>
-                      <option value="Commercial Space">Commercial Land / Showroom</option>
-                      <option value="Service Consultation">Legal & RERA Title Due Diligence</option>
-                      <option value="General Inquiry">General Investment Query</option>
-                    </select>
-                  </div>
+                  <p className="mbFormDisclaimer">
+                    🔒 100% Privacy Guaranteed. Zero spam. We never share your contact information.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div className="formGroup">
-                    <label>Preferred Visit Date</label>
-                    <input
-                      type="date"
-                      value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                    />
-                  </div>
-                </div>
+      {/* CITY PROJECT OFFICES DIRECTORY */}
+      <section className="mbOfficesSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Our Project Desks Across 5 Cities</span>
+          <h2 className="mbSectionTitle">Regional Project <span>Offices & Contact Desks</span></h2>
+          <p className="mbSectionDesc">Visit our local project desks or meet our on-ground advisory representatives.</p>
+        </div>
 
-                {formData.propertyInterest && (
-                  <div className="formGroup">
-                    <label>Selected Property / Service</label>
-                    <input
-                      type="text"
-                      readOnly
-                      value={formData.propertyInterest}
-                      className="prefilledInput"
-                    />
-                  </div>
-                )}
+        <div className="mbOfficesGrid">
+          <div className="mbOfficeCard">
+            <h3>📍 Jaipur (Headquarters)</h3>
+            <p className="mbOfficeLoc">Main Ajmer Road & Jagatpura Junction</p>
+            <p className="mbOfficePhone">📞 +91 98765 43210</p>
+            <span className="mbOfficeBadge">Key Corridors: Ring Road & SEZ</span>
+          </div>
 
-                <div className="formGroup">
-                  <div className="labelWithCount">
-                    <label>Message / Specific Dimension Requirement</label>
-                    <span className={`wordLimitBadge ${wordCount >= MAX_WORDS ? "limitReached" : ""}`}>
-                      {wordCount} / {MAX_WORDS} words
-                    </span>
-                  </div>
-                  <textarea
-                    rows={3}
-                    maxLength={300}
-                    placeholder="Describe your preferred location, dimension (Sq.Yd/Sq.Ft) or questions (Max 50 words)..."
-                    value={formData.message}
-                    onChange={handleMessageChange}
-                  ></textarea>
-                </div>
+          <div className="mbOfficeCard">
+            <h3>📍 Navi Mumbai</h3>
+            <p className="mbOfficeLoc">Panvel International Airport Growth Corridor</p>
+            <p className="mbOfficePhone">📞 +91 98765 43210</p>
+            <span className="mbOfficeBadge">Key Corridors: Aerocity Zone</span>
+          </div>
 
-                <button type="submit" className="goldBtn submitBtn">
-                  Submit Inquiry & Confirm Visit →
-                </button>
-              </form>
-            )}
+          <div className="mbOfficeCard">
+            <h3>📍 Bhiwadi (NCR)</h3>
+            <p className="mbOfficeLoc">Alwar Bypass & RIICO Industrial Corridor</p>
+            <p className="mbOfficePhone">📞 +91 98765 43210</p>
+            <span className="mbOfficeBadge">Key Corridors: Delhi-NCR Belt</span>
+          </div>
+
+          <div className="mbOfficeCard">
+            <h3>📍 Ajmer & Kishangarh</h3>
+            <p className="mbOfficeLoc">Expressway Front & NH-8 Marble City</p>
+            <p className="mbOfficePhone">📞 +91 98765 43210</p>
+            <span className="mbOfficeBadge">Key Corridors: Highway Commercial</span>
           </div>
         </div>
       </section>

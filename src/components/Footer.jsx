@@ -2,65 +2,114 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footerTop">
-        <div className="footerBrand">
-          <div className="footerLogoBox">
-            <img src="/emblem.png" alt="Plot With Property Emblem" className="footerEmblemImg" />
-            <img src="/brand-text-white.png" alt="Plot With Property" className="footerBrandImg" />
+    <footer className="mbFooter">
+      {/* Top Banner */}
+      <div className="mbFooterTopStrip">
+        <div className="mbFooterTopContainer">
+          <div className="mbFooterTrustItem">
+            <span className="mbTrustIcon">🛡️</span>
+            <div>
+              <strong>100% JDA & RERA Approved Plots</strong>
+              <p>Complete statutory legal security & clear marketable title</p>
+            </div>
           </div>
-          <p className="footerTagline">
-            <strong>Where Legacy Takes Shape. Where Vision Becomes Value.</strong>
-          </p>
-          <p className="footerDesc">
-            ✨ <strong>Raju Verma</strong> | Real Estate Expert • Gokul Kripa Sales & Marketing.<br />
-            Specializing in 100% JDA Approved & RERA Registered Townships across Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh.
-          </p>
-          <div className="contactPills">
-            <span>📞 Direct Hotline: +91 98765 43210</span>
-            <span>✉️ Inquiries: contact@plotwithproperty.com</span>
-            <span>📍 Projects in: Jaipur • Navi Mumbai • Bhiwadi • Ajmer • Kishangarh</span>
+
+          <div className="mbFooterTrustItem">
+            <span className="mbTrustIcon">🚗</span>
+            <div>
+              <strong>Free Family AC Cab Visit</strong>
+              <p>Complimentary doorstep pickup and site inspection</p>
+            </div>
           </div>
-        </div>
 
-        <div className="footerCol">
-          <h4>Explore</h4>
-          <Link to="/">Home Overview</Link>
-          <Link to="/properties">Featured Townships</Link>
-          <Link to="/about">Raju Verma & Team</Link>
-          <Link to="/services">Services & Advisory</Link>
-          <Link to="/#reviews">Client Reviews (4.9 ★)</Link>
-          <Link to="/contact">Schedule Site Visit</Link>
-        </div>
+          <div className="mbFooterTrustItem">
+            <span className="mbTrustIcon">🏦</span>
+            <div>
+              <strong>Up to 80% Bank Loan Support</strong>
+              <p>Pre-approved by SBI, HDFC, ICICI & Axis Bank</p>
+            </div>
+          </div>
 
-        <div className="footerCol">
-          <h4>Projects in 5 Cities</h4>
-          <Link to="/properties?loc=Jaipur">📍 Jaipur (Ajmer Rd & Ring Rd)</Link>
-          <Link to="/properties?loc=Navi%20Mumbai">📍 Navi Mumbai (Airport & Panvel)</Link>
-          <Link to="/properties?loc=Bhiwadi">📍 Bhiwadi (NCR Industrial Hub)</Link>
-          <Link to="/properties?loc=Ajmer">📍 Ajmer (Expressway & Pushkar)</Link>
-          <Link to="/properties?loc=Kishangarh">📍 Kishangarh (Marble City Highway)</Link>
-        </div>
-
-        <div className="footerCol">
-          <h4>Legal & Trust</h4>
-          <p className="trustBadgeItem">✅ <strong>JDA Approved Townships</strong></p>
-          <p className="trustBadgeItem">📜 <strong>RERA Registered Projects</strong></p>
-          <p className="trustBadgeItem">🏛️ <strong>Bank Loan Approved (SBI/HDFC)</strong></p>
-          <p className="trustBadgeItem">⚡ <strong>Instant Demarcation & Patta</strong></p>
+          <div className="mbFooterTrustItem">
+            <span className="mbTrustIcon">🤝</span>
+            <div>
+              <strong>0% Brokerage • Direct Developer Price</strong>
+              <p>Transparent dealing with instant on-ground possession</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="footerBottom">
-        <p>© 2026 Plot With Property (PWP). All Rights Reserved.</p>
-        <div className="footerLegal">
-          <a href="#privacy">Privacy Policy</a>
-          <span>•</span>
-          <a href="#terms">Terms of Service</a>
-          <span>•</span>
-          <a href="#rera">RERA Compliance</a>
-          <span>•</span>
-          <a href="#disclaimer">Disclaimer</a>
+      {/* Main Footer Links */}
+      <div className="mbFooterMain">
+        <div className="mbFooterContainer">
+          {/* Brand Info Col */}
+          <div className="mbFooterBrandCol">
+            <div className="mbFooterLogo">
+              <img src="/emblem.png" alt="Plot With Property Emblem" className="mbFooterEmblem" />
+              <img src="/brand-text-white.png" alt="Plot With Property" className="mbFooterBrandText" />
+            </div>
+            <p className="mbFooterTagline">
+              <strong>Where Trust Builds Lasting Value. Generational Security.</strong>
+            </p>
+            <p className="mbFooterDesc">
+              Chief Real Estate Advisor <strong>Raju Verma</strong> (Gokul Kripa Sales & Marketing). Trusted land advisory for 100% legally verified, high-growth township plots across Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh.
+            </p>
+            
+            <div className="mbFooterContactBox">
+              <a href="tel:+919876543210" className="mbFooterPhone">
+                📞 Hotline: +91 98765 43210
+              </a>
+              <span className="mbFooterEmail">✉️ contact@plotwithproperty.com</span>
+            </div>
+          </div>
+
+          {/* Col 1: Explore */}
+          <div className="mbFooterCol">
+            <h4>Quick Navigation</h4>
+            <Link to="/">Home Portal</Link>
+            <Link to="/properties">Buy Verified Plots</Link>
+            <Link to="/about">Meet Leadership (About Us)</Link>
+            <Link to="/services">Legal Audit & Loans (Services)</Link>
+            <Link to="/#reviews">Client Reviews (4.9 ★)</Link>
+            <Link to="/contact">Book Free Site Visit</Link>
+          </div>
+
+          {/* Col 2: Growth Corridors */}
+          <div className="mbFooterCol">
+            <h4>Projects Across 5 Cities</h4>
+            <Link to="/properties?loc=Jaipur">📍 Jaipur (Ajmer Road, Ring Road)</Link>
+            <Link to="/properties?loc=Navi%20Mumbai">📍 Navi Mumbai (Panvel, Airport Zone)</Link>
+            <Link to="/properties?loc=Bhiwadi">📍 Bhiwadi (Alwar Highway, NCR Belt)</Link>
+            <Link to="/properties?loc=Ajmer">📍 Ajmer (Expressway, Pushkar Bypass)</Link>
+            <Link to="/properties?loc=Kishangarh">📍 Kishangarh (NH-8 Highway)</Link>
+          </div>
+
+          {/* Col 3: Services & Legal */}
+          <div className="mbFooterCol">
+            <h4>Property Services</h4>
+            <Link to="/services">30-Year Mother Deed Due Diligence</Link>
+            <Link to="/services">80% Bank Loan Processing</Link>
+            <Link to="/services">On-ground Pillar Demarcation</Link>
+            <Link to="/services">Registry & Mutation Assistance</Link>
+            <Link to="/services">High-Yield Land Investment</Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Bottom Bar */}
+      <div className="mbFooterBottom">
+        <div className="mbFooterBottomContainer">
+          <p>© 2026 Plot With Property (PWP). All rights reserved.</p>
+          <div className="mbFooterLegalLinks">
+            <a href="#privacy">Privacy Policy</a>
+            <span>•</span>
+            <a href="#terms">Terms & Conditions</a>
+            <span>•</span>
+            <a href="#rera">RERA Compliance</a>
+            <span>•</span>
+            <a href="#disclaimer">Legal Disclaimer</a>
+          </div>
         </div>
       </div>
     </footer>

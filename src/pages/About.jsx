@@ -1,249 +1,229 @@
 import { Link } from "react-router-dom";
+import rajuVermaImg from "../assets/team/raju_verma.jpg";
+import rohitSharmaImg from "../assets/team/rohit_sharma.jpg";
+import ananyaMehraImg from "../assets/team/ananya_mehra.jpg";
+import sureshChoudharyImg from "../assets/team/suresh_choudhary.jpg";
+import aboutHqImg from "../assets/about_hq.jpg";
 
 export default function About() {
   const coreValues = [
     {
       icon: "📜",
-      title: "100% Legal Transparency",
-      desc: "Every single plot and property in our portfolio undergoes rigorous legal due diligence, 30-year title search, and government approval audits (JDA/RERA)."
+      title: "100% Legal Due Diligence & Patta",
+      desc: "Every property undergoes rigorous legal title verification, 30-year mother deed scrutiny, JDA approval, and RERA compliance by senior High Court advocates."
     },
     {
       icon: "📈",
-      title: "High Growth Corridors",
-      desc: "We exclusively target emerging infrastructure hubs, expressway junctions, and ring road zones that guarantee consistent 15-20% YoY appreciation."
+      title: "High-Growth Corridors",
+      desc: "We handpick prime land parcels along Ajmer Road, Ring Road, Navi Mumbai Airport Zone, and NCR Highways yielding 15-22% annual capital appreciation."
     },
     {
       icon: "🤝",
-      title: "Client-Centric Advisory",
-      desc: "We don't merely sell plots; we partner with you to analyze your wealth goals, family aspirations, and tax strategies for generational prosperity."
+      title: "Client-First Advisory",
+      desc: "We guide Indian families with complete transparency, transforming their hard-earned life savings into legally bulletproof, high-value real estate assets."
     },
     {
       icon: "⚡",
-      title: "Instant Demarcation & Registry",
-      desc: "From initial guided site tour, registry documentation, physical corner demarcation pillars to mutation, our advisory team handles every single detail."
+      title: "On-Ground Demarcation & Immediate Possession",
+      desc: "Every plot features reinforced boundary pillars, wide sector roads, underground utility lines, spot registration, and immediate mutation support."
     }
   ];
 
   const milestones = [
-    { number: "10+", label: "Years in Real Estate" },
-    { number: "500+", label: "Verified Plots Sold" },
-    { number: "₹250Cr+", label: "Assets Facilitated" },
-    { number: "99.4%", label: "Client Satisfaction Rate" }
+    { number: "10+ Years", label: "Proven Real Estate Experience" },
+    { number: "500+", label: "Verified Plots & Townships" },
+    { number: "₹250Cr+", label: "Successful Property Transactions" },
+    { number: "99.4%", label: "Satisfied Client Families" }
   ];
 
   const wisdomQuotes = [
     {
       id: 1,
-      quote: "Ninety percent of all millionaires become so through owning real estate. More money has been made in real estate than in all industrial investments combined.",
-      author: "Andrew Carnegie",
-      title: "Industrialist & Philanthropist"
+      quote: "Land is the ultimate enduring wealth. One who invests in prime land at the right time establishes an unbreakable financial shield for future generations.",
+      author: "Land Wealth Advisory Insights",
+      title: "Real Estate Wealth Philosophy"
     },
     {
       id: 2,
-      quote: "Don't wait to buy real estate, buy real estate and wait. Land is the single greatest foundation of generational security.",
-      author: "Will Rogers",
-      title: "American Philosopher & Investor"
+      quote: "The best time to buy land was yesterday; the second best time is today. A government-approved plot with clear title is an asset that never depreciates.",
+      author: "Gokul Kripa Advisory Principles",
+      title: "Secure Real Estate Standards"
     },
     {
       id: 3,
-      quote: "At Plot With Property, our commitment is to guide you where vision becomes value. We deliver 100% JDA approved & RERA registered townships so your family can own a lasting legacy.",
+      quote: "Plot With Property is committed to ensuring your hard-earned savings translate into secure, appreciating, and verified land assets. We only deal in 100% JDA and RERA approved plots.",
       author: "Raju Verma",
-      title: "Real Estate Expert • Gokul Kripa Sales & Marketing"
+      title: "Chief Real Estate Advisor • Gokul Kripa"
     },
     {
       id: 4,
-      quote: "Invest. Build. Grow. Real estate purchased with common sense and clear government title is the safest, highest-yielding asset on earth.",
-      author: "Louis Glickman",
-      title: "Real Estate Investor"
+      quote: "Wide sector roads, statutory government patta, and direct highway connectivity are the three pillars of exponential property value growth in India.",
+      author: "Rajasthan Township Development Guide",
+      title: "Infrastructure Standards"
     }
   ];
 
   const team = [
     {
       name: "Raju Verma",
-      role: "Real Estate Expert | Gokul Kripa Sales & Marketing",
-      experience: "Advisory Specialist for Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+      role: "Chief Real Estate Advisor | Founder",
+      experience: "Gokul Kripa Sales & Marketing • 10+ years shaping premier plotted townships across Jaipur, Navi Mumbai, Bhiwadi & Ajmer.",
+      image: rajuVermaImg
     },
     {
       name: "Rohit Sharma",
-      role: "Head of Commercial & Plots",
-      experience: "Township Planning & High-Yield Asset Acquisition",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+      role: "Head – Township & Land Acquisition",
+      experience: "Master township planning, sector road architecture & high-yield strategic land procurement specialist (12+ years).",
+      image: rohitSharmaImg
     },
     {
       name: "Adv. Ananya Mehra",
-      role: "Legal & RERA Compliance Specialist",
-      experience: "Senior Real Estate Legal Advocate (High Court Panel)",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+      role: "Senior Legal & RERA Compliance Head",
+      experience: "Revenue & High Court panel advocate • 30-year mother deed scrutiny, title verification & mutation specialist.",
+      image: ananyaMehraImg
+    },
+    {
+      name: "Suresh Choudhary",
+      role: "Director – Client Advisory & On-Ground Operations",
+      experience: "Client relations, complimentary family site visit logistics & physical pillar demarcation head (8+ years).",
+      image: sureshChoudharyImg
     }
   ];
 
   return (
-    <div className="pageContainer">
-      {/* PAGE HEADER */}
-      <section className="pageHeader">
-        <div className="headerOverlay"></div>
-        <div className="headerContent">
-          <p className="smallTitle">✨ RAJU VERMA • GOKUL KRIPA SALES & MARKETING</p>
-          <h1>Where Legacy <span>Takes Shape.</span></h1>
-          <p className="headerSubtext">
-            PLOT WITH PROPERTY — Where Vision Becomes Value. Delivering verified JDA & RERA approved township plots across Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh.
+    <div className="pageContainer mbThemePage">
+      {/* FLOATING QUICK CONTACT PILL */}
+      <div className="floatingContactPill">
+        <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20JDA/RERA%20approved%20plots." target="_blank" rel="noopener noreferrer" className="floatWaBtn">
+          <span className="waIcon">💬</span>
+          <span className="waText">Chat on WhatsApp</span>
+        </a>
+        <a href="tel:+919876543210" className="floatCallBtn">
+          <span className="callIcon">📞</span>
+          <span className="callText">+91 98765 43210</span>
+        </a>
+      </div>
+
+      {/* ABOUT PORTAL HEADER */}
+      <section className="mbPortalHeader">
+        <div className="mbPortalHeaderInner">
+          <div className="mbPortalBadge">
+            <span className="mbLiveDot"></span>
+            <span>✨ Raju Verma • Gokul Kripa Sales & Marketing</span>
+          </div>
+          <h1>Where Trust Transforms Into Lasting Generational Value</h1>
+          <p>
+            PLOT WITH PROPERTY — India's trusted advisory for 100% government-approved (JDA & RERA), legally audited, and high-appreciation plotted townships.
           </p>
         </div>
       </section>
 
-      {/* STORY SECTION */}
-      <section className="aboutStorySection">
-        <div className="aboutStoryGrid">
-          <div className="aboutStoryImage">
+      {/* STORY & LEADERSHIP SECTION */}
+      <section className="mbAboutStorySection">
+        <div className="mbAboutGrid">
+          <div className="mbAboutImgCol">
             <img
-              src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1200&q=80"
-              alt="Plot With Property Corporate Headquarters"
+              src={aboutHqImg}
+              alt="Plot With Property Headquarters & Township"
+              className="mbAboutImg"
             />
-            <div className="experienceBox">
-              <strong>10+</strong>
-              <span>Years of Excellence</span>
+            <div className="mbAboutBadgeCard">
+              <span className="mbBadgeYears">10+</span>
+              <span className="mbBadgeText">Years of Trusted Real Estate Leadership</span>
             </div>
           </div>
 
-          <div className="aboutStoryContent">
-            <p className="goldText">OUR HERITAGE & VISION</p>
-            <h2>Invest • Build • Grow — Own Your Legacy</h2>
+          <div className="mbAboutTextCol">
+            <span className="mbSectionTag">Our Vision & Leadership</span>
+            <h2 className="mbSectionTitle">Building Dream Homes. <span>Securing Future Generations.</span></h2>
             <p>
-              In strategic partnership with <strong>Gokul Kripa Sales & Marketing</strong> and led by real estate expert <strong>Raju Verma</strong>,
-              <strong> Plot With Property (PWP)</strong> has emerged as the premier advisory for high-appreciation land and township acquisitions.
+              Under the seasoned leadership of <strong>Raju Verma</strong> (Gokul Kripa Sales & Marketing), Plot With Property has become a benchmark in Rajasthan and Maharashtra for verified residential and commercial plotted developments.
             </p>
             <p>
-              We specialize in 100% legally clear, JDA-approved and RERA-registered townships in <strong>Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh</strong>.
-              From title verification, physical on-ground demarcation, to instant registry and patta handover, we provide seamless end-to-end assistance.
+              We believe land is not merely an asset—it is a family's foundation of pride, security, and wealth. Our 30-year legal due diligence, zero-brokerage direct developer model, and on-ground boundary demarcation ensure absolute peace of mind.
             </p>
 
-            <div className="checkList">
-              <div className="checkItem">
-                <span className="checkIcon">✔</span>
-                <div>
-                  <strong>Zero Hidden Costs & Upfront Transparency</strong>
-                  <p>Clear government registration fee calculations and upfront pricing.</p>
+            <div className="mbMilestonesRow">
+              {milestones.map((m, idx) => (
+                <div key={idx} className="mbMilestoneItem">
+                  <h3>{m.number}</h3>
+                  <p>{m.label}</p>
                 </div>
-              </div>
-              <div className="checkItem">
-                <span className="checkIcon">✔</span>
-                <div>
-                  <strong>Certified Legal Verification</strong>
-                  <p>Comprehensive 30-year mother deed title search conducted by high court advocates.</p>
-                </div>
-              </div>
-              <div className="checkItem">
-                <span className="checkIcon">✔</span>
-                <div>
-                  <strong>Guided Free Cab Site Visits</strong>
-                  <p>Personalized guided visits with our local property analysts all 7 days a week.</p>
-                </div>
-              </div>
+              ))}
+            </div>
+
+            <div className="mbAboutActions">
+              <Link to="/contact" className="mbPrimaryGoldBtn">
+                🚗 Book Free Site Visit →
+              </Link>
+              <a href="tel:+919876543210" className="mbOutlineBtn">
+                📞 Call Now: +91 98765 43210
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="statsSection">
-        <div className="statsGrid">
-          {milestones.map((item, idx) => (
-            <div className="statItem" key={idx}>
-              <h3>{item.number}</h3>
-              <p>{item.label}</p>
+      {/* CORE VALUES GRID */}
+      <section className="mbValuesSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Our Core Commitments</span>
+          <h2 className="mbSectionTitle">Guaranteed Security & <span>Uncompromising Quality</span></h2>
+          <p className="mbSectionDesc">Absolute legal transparency at every step so every rupee of your investment is 100% protected.</p>
+        </div>
+
+        <div className="mbValuesGrid">
+          {coreValues.map((v, idx) => (
+            <div className="mbValueCard" key={idx}>
+              <div className="mbValueIcon">{v.icon}</div>
+              <h3>{v.title}</h3>
+              <p>{v.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* WISDOM & THOUGHTS SECTION (EXECUTIVE QUOTES) */}
-      <section className="wisdomSection">
-        <div className="sectionHeading">
-          <p>WORDS OF WISDOM</p>
-          <h2>Thoughts on <span>Land & Wealth</span></h2>
-          <p className="sectionSubDesc">
-            Timeless philosophies that guide our investment strategies and long-term asset building.
-          </p>
-          <div className="goldLine"></div>
+      {/* MEET OUR LEADERSHIP SECTION */}
+      <section className="mbTeamSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Experienced Real Estate Leadership</span>
+          <h2 className="mbSectionTitle">Meet Our Leadership</h2>
+          <p className="mbSectionDesc">100% statutory JDA/RERA townships, transparent legal processes, and trusted Indian leadership.</p>
         </div>
 
-        <div className="wisdomGrid">
-          {wisdomQuotes.map((item) => (
-            <div className="wisdomCard" key={item.id}>
-              <span className="quoteMark">“</span>
-              <p className="quoteText">{item.quote}</p>
-              <div className="quoteAuthorBox">
-                <div className="goldAuthorLine"></div>
-                <h4>{item.author}</h4>
-                <p>{item.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CORE VALUES */}
-      <section className="valuesSection">
-        <div className="sectionHeading">
-          <p>OUR GUIDING PRINCIPLES</p>
-          <h2>The Values That <span>Define Us</span></h2>
-          <div className="goldLine"></div>
-        </div>
-
-        <div className="valuesGrid">
-          {coreValues.map((val, idx) => (
-            <div className="valueCard" key={idx}>
-              <div className="valueIcon">{val.icon}</div>
-              <h3>{val.title}</h3>
-              <p>{val.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* LEADERSHIP TEAM */}
-      <section className="teamSection">
-        <div className="sectionHeading">
-          <p>EXPERT ADVISORS</p>
-          <h2>Meet Our <span>Leadership</span></h2>
-          <div className="goldLine"></div>
-        </div>
-
-        <div className="teamGrid">
+        <div className="mbTeamGrid">
           {team.map((member, idx) => (
-            <div className="teamCard" key={idx}>
-              <div className="teamImage">
-                <img src={member.image} alt={member.name} />
-              </div>
-              <div className="teamInfo">
+            <div className="mbTeamCard" key={idx}>
+              <img src={member.image} alt={member.name} className="mbTeamImg" />
+              <div className="mbTeamBody">
                 <h3>{member.name}</h3>
-                <p className="teamRole">{member.role}</p>
-                <p className="teamExp">{member.experience}</p>
-                <div className="teamContactActions">
-                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="teamWaBtn">
-                    💬 WhatsApp Direct
-                  </a>
-                </div>
+                <p className="mbTeamRole">{member.role}</p>
+                <p className="mbTeamExp">{member.experience}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta">
-        <div>
-          <p>WANT TO DISCUSS YOUR INVESTMENT GOALS?</p>
-          <h2>Schedule A One-On-One <span>Consultation</span></h2>
-          <p style={{ color: "#6B7280", marginTop: "10px" }}>
-            Connect directly with our senior property advisors at our Jaipur or Delhi NCR corporate office.
-          </p>
+      {/* REAL ESTATE WISDOM QUOTES */}
+      <section className="mbQuotesSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">The Power of Land Ownership</span>
+          <h2 className="mbSectionTitle">Why Land Remains <span>The Most Secure Asset?</span></h2>
         </div>
-        <Link to="/contact" className="goldBtn">
-          Book Appointment →
-        </Link>
+
+        <div className="mbQuotesGrid">
+          {wisdomQuotes.map((q) => (
+            <div className="mbQuoteCard" key={q.id}>
+              <span className="mbQuoteMark">“</span>
+              <p className="mbQuoteBody">{q.quote}</p>
+              <div className="mbQuoteAuthor">
+                <strong>{q.author}</strong>
+                <span>{q.title}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

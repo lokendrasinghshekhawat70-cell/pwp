@@ -7,209 +7,195 @@ export default function Services() {
   const serviceThoughts = [
     {
       id: 1,
-      quote: "The best investment on earth is earth. Land cannot be manufactured, making prime locations an everlasting store of wealth.",
-      author: "Louis Glickman",
-      title: "Real Estate Investor & Visionary"
+      quote: "Land is the ultimate finite asset. Acquiring a government-approved plot in an emerging growth corridor is the single most secure foundation for your family's future wealth.",
+      author: "Indian Land Investment Philosophy",
+      title: "Strategic Wealth Principles"
     },
     {
       id: 2,
-      quote: "Buy land, they're not making it anymore. Strategic plots in expanding corridors yield unparalleled returns over time.",
-      author: "Mark Twain",
-      title: "Author & Global Investor"
+      quote: "100% verified JDA Patta, immediate spot registration, and on-ground concrete boundary pillars—this is the golden standard of trust every Indian buyer deserves.",
+      author: "Raju Verma",
+      title: "Chief Advisor • Gokul Kripa"
     },
     {
       id: 3,
-      quote: "Real estate cannot be lost or stolen, nor can it be carried away. Purchased with common sense and clear title, it is the safest investment in the world.",
-      author: "Franklin D. Roosevelt",
-      title: "32nd U.S. President"
+      quote: "A prime plot acquired along Ajmer Road, Ring Road, or expressway corridors today becomes tomorrow's generational wealth multiplier.",
+      author: "Township Development Research",
+      title: "High-Growth Corridor Analysis"
     }
   ];
 
   const detailedServices = [
     {
       id: "plots",
-      icon: "⌂",
-      title: "Plot & Land Acquisition",
-      tag: "CORE SPECIALTY",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-      summary: "High-potential residential and commercial plots in prime growth corridors with verified titles.",
+      icon: "🏡",
+      title: "JDA & RERA Approved Plots (Plot Acquisition)",
+      tag: "Core Specialty",
+      image: "/plots/indian_luxury_township.jpg",
+      summary: "100% clear title, government patta, and ready-to-register residential plots across Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh.",
       bullets: [
-        "Government-approved (JDA, HUDA, DDA) verified freehold lands",
-        "Gated townships with wide asphalt roads, electricity, and underground water",
-        "Clear demarcation, instant possession, and immediate registry support",
-        "Specialized in Jaipur Ring Road, Ajmer Road, and Delhi NCR corridors"
+        "100% JDA Patta & RERA registered master gated townships",
+        "60ft to 100ft wide blacktop sector roads with underground utilities",
+        "Physical on-ground pillar demarcation with instant registry",
+        "Prime corridors: Ajmer Road, Ring Road, Diggi Road & NCR Expressways"
       ]
     },
     {
       id: "residential",
-      icon: "◆",
-      title: "Luxury Residential Sales",
-      tag: "BESPOKE HOMES",
-      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
-      summary: "Curated portfolio of bespoke luxury villas, duplexes, and gated community residences.",
+      icon: "🏛️",
+      title: "Luxury Villa & Residential Plots (Villa Land)",
+      tag: "Premium Enclaves",
+      image: "/plots/indian_villa_plot.jpg",
+      summary: "Gated townships equipped with clubhouse, landscaped parks, temple, and 24/7 round-the-clock security.",
       bullets: [
-        "Architecturally designed villas with modern finishes and private landscaped lawns",
-        "Exclusive gated enclaves with clubhouses, swimming pools, and 24/7 smart security",
-        "Prime connectivity to top international schools, metro stations, and hospitals",
-        "Assistance with competitive home loan financing from top national banks (SBI/HDFC)"
+        "Vastu-compliant east and north-facing plot options available",
+        "Clubhouse, swimming pool, gym, yoga zones & community parks",
+        "Proximity to top international schools, hospitals & transit corridors",
+        "Up to 80% instant home loan pre-approved with SBI & HDFC"
       ]
     },
     {
       id: "commercial",
       icon: "🏢",
-      title: "Commercial & Retail Space",
-      tag: "HIGH YIELD ASSETS",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-      summary: "High-yielding commercial plots, retail showrooms, and corporate office spaces.",
+      title: "Highway Commercial Land & Showroom Plots",
+      tag: "High-Yield Assets",
+      image: "/plots/indian_headquarters.jpg",
+      summary: "High-visibility commercial land parcels along National Highways and major sector roads delivering 10-15% assured returns.",
       bullets: [
-        "High-footfall corner plots along major highway arterial roads and expressways",
-        "Pre-leased properties offering guaranteed 9% – 12% rental yield",
-        "Ideal for corporate headquarters, boutique hospitals, and luxury retail hubs",
-        "Comprehensive footfall demographic and ROI feasibility reports"
+        "High-visibility corner plots along 100ft & 200ft main sector roads",
+        "Ideal for corporate offices, retail showrooms, hotels, warehouses & hospitals",
+        "Direct highway frontage with seamless RIICO & industrial connectivity",
+        "Comprehensive commercial land-use conversion (90A) and revenue approvals"
       ]
     },
     {
       id: "legal",
       icon: "⚖️",
-      title: "Legal & RERA Due Diligence",
-      tag: "100% DISPUTE FREE",
-      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
-      summary: "End-to-end legal title verification, 30-year mother deed audit, and registration support.",
+      title: "30-Year Legal Due Diligence (Legal Audit)",
+      tag: "100% Clear Title",
+      image: "/plots/indian_headquarters.jpg",
+      summary: "30-year Mother Deed audit, Khasra-Khatauni validation, and non-encumbrance title search by High Court empaneled advocates.",
       bullets: [
-        "30-year mother deed and ownership title chain verification by high court advocates",
-        "RERA compliance validation, master plan zoning checks, and land conversion clearance",
-        "Drafting of Sale Agreements, No-Objection Certificates (NOC), and Power of Attorney",
-        "Concierge accompaniment for registry, stamp duty computation, and mutation"
+        "30-year revenue chain audit and Non-Encumbrance Certificate (NEC)",
+        "JDA Master Plan zoning, land conversion (90A), and RERA approval check",
+        "Precision legal drafting of Agreement to Sale and registered Sale Deed",
+        "Personal representation at the Sub-Registrar office & fast-track Mutation (Dakhil Kharij)"
       ]
     },
     {
       id: "investment",
-      icon: "◈",
-      title: "Strategic Investment Advisory",
-      tag: "WEALTH PLANNING",
-      image: "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=800&q=80",
-      summary: "Tailored wealth generation blueprints through smart real estate allocations.",
+      icon: "📈",
+      title: "Strategic Land Investment & Tax Advisory",
+      tag: "Wealth Planning",
+      image: "/plots/indian_airport_corridor.jpg",
+      summary: "Comprehensive capital growth planning along upcoming expressways, ring roads, and international airport corridors.",
       bullets: [
-        "Macro & micro market appreciation analytics and clear entry-exit strategies",
-        "Capital gains tax exemption guidance (Section 54 / 54EC advisory)",
-        "Fractional and joint-development land investment opportunities",
-        "Portfolio rebalancing and resale asset liquidation services"
+        "Micro-market growth trends with strategic entry and exit timing",
+        "Expert guidance on Capital Gains Tax exemptions (Section 54 / 54EC)",
+        "End-to-end concierge advisory for NRI and overseas investors",
+        "Dedicated plot resale and liquidity assistance"
       ]
     },
     {
       id: "vastu",
       icon: "📐",
-      title: "Architectural & Vastu Guidance",
-      tag: "SCIENTIFIC PLANNING",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-      summary: "Scientific Vastu evaluation and master architectural layout planning for optimum harmony.",
+      title: "On-Ground Demarcation & Spot Registration",
+      tag: "Physical Verification",
+      image: "/plots/indian_villa_plot.jpg",
+      summary: "Accurate GPS coordinates, reinforced concrete corner pillars, and complete spot registration assistance.",
       bullets: [
-        "Plot orientation, direction of entry, slope, and energy flow assessment",
-        "Custom floor plan blueprints aligned with local building bylaws",
-        "Liaison with top landscape designers and structural engineers",
-        "Vastu compliance certificates for peace of mind and prosperity"
+        "Distinct physical demarcation with reinforced concrete boundary pillars",
+        "Township layout map, sector road plan, and satellite coordinate records",
+        "Accurate stamp duty assessment and 100% transparent billing",
+        "Immediate post-registry Dakhil Kharij (Mutation) filing"
       ]
     }
   ];
 
   const processSteps = [
-    { step: "01", title: "Discovery & Goal Setting", desc: "We understand your budget, preferred location, and investment timeline." },
-    { step: "02", title: "Curated Shortlisting", desc: "We present verified options that strictly meet your criteria with video previews." },
-    { step: "03", title: "Guided Site Tour", desc: "Comfortable guided site visits with our local property specialists." },
-    { step: "04", title: "Legal Title Verification", desc: "Our legal panel confirms clear titles, JDA/RERA approvals, and encumbrance reports." },
-    { step: "05", title: "Registry & Handover", desc: "Smooth registration paperwork, mutation assistance, and on-ground possession." }
+    { step: "01", title: "Consultation & Budgeting", desc: "Understand your investment goals, preferred location, and optimal budget allocation." },
+    { step: "02", title: "Shortlisting & Layout Review", desc: "Detailed review of 100% JDA/RERA township layouts, video walkthroughs, and master plans." },
+    { step: "03", title: "Free AC Cab Family Site Visit", desc: "Complimentary doorstep pickup for your entire family for a transparent on-ground site inspection." },
+    { step: "04", title: "Legal & Title Verification", desc: "Full audit of 30-year mother deed, JDA patta, RERA registration, and bank loan pre-approvals." },
+    { step: "05", title: "Registration & Possession", desc: "Spot registration at the sub-registrar office, instant physical possession with boundary pillars, and mutation filing." }
   ];
 
   const faqs = [
     {
-      q: "Are all plots listed on Plot With Property legally verified?",
-      a: "Yes. Every single property undergoes a mandatory legal audit by our advocate team, verifying 30-year title deeds, master plan zoning, and government regulatory approvals (JDA, RERA, etc.)."
+      q: "Are all plots listed on Plot With Property 100% JDA and RERA approved?",
+      a: "Yes. Every single township and land parcel in our portfolio is 100% legally approved by statutory authorities (JDA / RERA / Govt. Approved). Each project comes with clear government patta, town planning approvals, and a 30-year legal due diligence report."
     },
     {
-      q: "Do you offer bank loan assistance for plot purchases?",
-      a: "Yes, we have tie-ups with leading national and private banks (SBI, HDFC, ICICI, Axis Bank) to facilitate hassle-free loan approvals with up to 80% financing."
+      q: "Is bank loan facility available on these plots?",
+      a: "Yes, our projects are pre-approved for up to 80% home/land loans by India's leading nationalized and private banks including SBI, HDFC, ICICI, and Axis Bank with expedited sanctioning."
     },
     {
-      q: "How do I schedule a site visit?",
-      a: "You can click on 'Book Visit' on any property card or visit our Contact page to choose your preferred date and time. Our representative will arrange chauffeur pickup or coordinate on-site meetups."
+      q: "How do I book a complimentary site visit for my family?",
+      a: "You can book a free site visit directly by clicking 'Book Free Site Visit' on our portal or calling/messaging us on WhatsApp at +91 98765 43210. We provide comfortable doorstep AC cab pickup and drop across Jaipur, Bhiwadi, and Ajmer."
     },
     {
-      q: "What is the typical appreciation rate in your featured locations?",
-      a: "Our curated corridors (like Jaipur's Ajmer Road and Ring Road, or Gurgaon's Dwarka Expressway) have historically demonstrated consistent 12% to 18% annual capital appreciation."
+      q: "What is the process for registration and physical possession?",
+      a: "We follow a completely transparent process. You receive immediate on-ground physical possession with concrete boundary pillars, followed by immediate execution of the registered sale deed and fast-track mutation (Dakhil Kharij) support."
     }
   ];
 
   return (
-    <div className="pageContainer">
-      {/* PAGE HEADER */}
-      <section className="pageHeader">
-        <div className="headerOverlay"></div>
-        <div className="headerContent">
-          <p className="smallTitle">OUR SERVICES</p>
-          <h1>Comprehensive <span>Real Estate Solutions</span></h1>
-          <p className="headerSubtext">
-            From discovering prime plots to seamless legal registry and high-ROI investment advisory, we handle every dimension of your property journey.
+    <div className="pageContainer mbThemePage">
+      {/* FLOATING QUICK CONTACT PILL */}
+      <div className="floatingContactPill">
+        <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20looking%20for%20property%20services%20and%20plot%20details." target="_blank" rel="noopener noreferrer" className="floatWaBtn">
+          <span className="waIcon">💬</span>
+          <span className="waText">Chat on WhatsApp</span>
+        </a>
+        <a href="tel:+919876543210" className="floatCallBtn">
+          <span className="callIcon">📞</span>
+          <span className="callText">+91 98765 43210</span>
+        </a>
+      </div>
+
+      {/* SERVICES PORTAL HEADER */}
+      <section className="mbPortalHeader">
+        <div className="mbPortalHeaderInner">
+          <div className="mbPortalBadge">
+            <span className="mbLiveDot"></span>
+            <span>Magicbricks Style Advisory • 0% Brokerage • Direct Developer Price</span>
+          </div>
+          <h1>Comprehensive Real Estate & Land Advisory Services</h1>
+          <p>
+            From statutory JDA-approved township plots and 30-year legal title search to 80% bank loans and instant on-ground physical possession.
           </p>
         </div>
       </section>
 
-      {/* THOUGHTS & PHILOSOPHIES BEHIND OUR SERVICES */}
-      <section className="wisdomSection serviceWisdom">
-        <div className="sectionHeading">
-          <p>INVESTMENT PHILOSOPHY</p>
-          <h2>Thoughts on <span>Real Estate Strategy</span></h2>
-          <p className="sectionSubDesc">
-            Guiding principles that power our strategic advisory and land shortlisting.
-          </p>
-          <div className="goldLine"></div>
+      {/* DETAILED SERVICES GRID */}
+      <section className="mbServicesDetailSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Our Core Expertise</span>
+          <h2 className="mbSectionTitle">Dedicated Services for <span>Your Secure Investment</span></h2>
+          <p className="mbSectionDesc">Transparent, legally verified, and trusted by hundreds of families across India.</p>
         </div>
 
-        <div className="wisdomGrid">
-          {serviceThoughts.map((item) => (
-            <div className="wisdomCard" key={item.id}>
-              <span className="quoteMark">“</span>
-              <p className="quoteText">{item.quote}</p>
-              <div className="quoteAuthorBox">
-                <div className="goldAuthorLine"></div>
-                <h4>{item.author}</h4>
-                <p>{item.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DETAILED SERVICES GRID WITH PHOTOS */}
-      <section className="servicesDetailSection">
-        <div className="sectionHeading">
-          <p>WHAT WE SPECIALIZE IN</p>
-          <h2>End-To-End <span>Property Services</span></h2>
-          <p className="sectionSubDesc">
-            Transparent, secure, and concierge-level real estate solutions tailored to your unique financial goals.
-          </p>
-          <div className="goldLine"></div>
-        </div>
-
-        <div className="detailedServiceGrid">
+        <div className="mbDetailedServiceGrid">
           {detailedServices.map((srv) => (
-            <div className="detailedServiceCard" key={srv.id}>
-              <div className="serviceCardImage">
+            <div className="mbDetailedCard" key={srv.id}>
+              <div className="mbDetailedImgWrap">
                 <img src={srv.image} alt={srv.title} />
-                <span className="serviceTag">{srv.tag}</span>
+                <span className="mbDetailedTag">{srv.tag}</span>
               </div>
-              <div className="serviceCardBody">
-                <div className="serviceIconLarge">{srv.icon}</div>
+              <div className="mbDetailedBody">
+                <div className="mbDetailedIcon">{srv.icon}</div>
                 <h3>{srv.title}</h3>
-                <p className="serviceSummary">{srv.summary}</p>
-                <ul className="serviceBulletList">
+                <p className="mbDetailedSummary">{srv.summary}</p>
+                <ul className="mbDetailedList">
                   {srv.bullets.map((b, i) => (
                     <li key={i}>
-                      <span className="bulletDot">✦</span> {b}
+                      <span className="mbBulletCheck">✓</span>
+                      <span>{b}</span>
                     </li>
                   ))}
                 </ul>
-                <Link to={`/contact?service=${encodeURIComponent(srv.title)}`} className="serviceActionBtn">
-                  Inquire for {srv.title.split(" ")[0]} →
+                <Link to={`/contact?service=${encodeURIComponent(srv.title)}`} className="mbDetailedLink">
+                  Consult Advisor →
                 </Link>
               </div>
             </div>
@@ -217,18 +203,18 @@ export default function Services() {
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section className="processSection">
-        <div className="sectionHeading">
-          <p>HOW IT WORKS</p>
-          <h2>Our 5-Step <span>Seamless Process</span></h2>
-          <div className="goldLine"></div>
+      {/* 5-STEP PROCESS SECTION */}
+      <section className="mbProcessSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Simple & Secure Process</span>
+          <h2 className="mbSectionTitle">Become a Proud Landowner in <span>5 Easy Steps</span></h2>
+          <p className="mbSectionDesc">From initial consultation to spot registry and physical possession, we are with you at every step.</p>
         </div>
 
-        <div className="processGrid">
+        <div className="mbProcessGrid">
           {processSteps.map((p, idx) => (
-            <div className="processCard" key={idx}>
-              <span className="processStepNum">{p.step}</span>
+            <div className="mbProcessCard" key={idx}>
+              <span className="mbStepNumber">{p.step}</span>
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
             </div>
@@ -236,25 +222,25 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ ACCORDION */}
-      <section className="faqSection">
-        <div className="sectionHeading">
-          <p>FREQUENTLY ASKED QUESTIONS</p>
-          <h2>Have <span>Questions?</span></h2>
-          <div className="goldLine"></div>
+      {/* FAQ SECTION */}
+      <section className="mbFaqSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Frequently Asked Questions</span>
+          <h2 className="mbSectionTitle">Got Questions? <span>Here are the Answers</span></h2>
+          <p className="mbSectionDesc">Everything you need to know about buying verified plots with zero hassle.</p>
         </div>
 
-        <div className="faqList">
+        <div className="mbFaqList">
           {faqs.map((faq, idx) => {
             const isOpen = openFaq === idx;
             return (
-              <div className={`faqItem ${isOpen ? "open" : ""}`} key={idx}>
-                <button className="faqQuestion" onClick={() => setOpenFaq(isOpen ? null : idx)}>
+              <div className={`mbFaqItem ${isOpen ? "open" : ""}`} key={idx}>
+                <button className="mbFaqQuestion" onClick={() => setOpenFaq(isOpen ? null : idx)}>
                   <span>{faq.q}</span>
-                  <span className="faqToggleIcon">{isOpen ? "−" : "+"}</span>
+                  <span className="mbFaqToggle">{isOpen ? "−" : "+"}</span>
                 </button>
                 {isOpen && (
-                  <div className="faqAnswer">
+                  <div className="mbFaqAnswer">
                     <p>{faq.a}</p>
                   </div>
                 )}
@@ -265,14 +251,23 @@ export default function Services() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="cta">
-        <div>
-          <p>READY TO EXPLORE OUR TAILORED SERVICES?</p>
-          <h2>Get Expert <span>Consultation Today</span></h2>
+      <section className="mbCtaSection">
+        <div className="mbCtaContainer">
+          <div className="mbCtaText">
+            <span className="mbCtaPreTag">Schedule Your Site Visit Today</span>
+            <h2>Book a Free Family Site Visit in <span>Complimentary AC Cab</span></h2>
+            <p>Inspect 100% JDA & RERA approved townships on-ground with Raju Verma and our senior advisory team.</p>
+          </div>
+
+          <div className="mbCtaButtons">
+            <Link to="/contact" className="mbPrimaryGoldBtn large">
+              🚗 Book Free Site Visit →
+            </Link>
+            <a href="tel:+919876543210" className="mbCtaCallBtn">
+              📞 Call Now: +91 98765 43210
+            </a>
+          </div>
         </div>
-        <Link to="/contact" className="goldBtn">
-          Contact Our Advisors →
-        </Link>
       </section>
     </div>
   );

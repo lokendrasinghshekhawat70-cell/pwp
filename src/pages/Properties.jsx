@@ -10,45 +10,45 @@ const PROPERTIES_DATA = [
     type: "Plot",
     category: "Residential",
     size: "2500 Sq.Ft (277 Sq.Yd)",
-    price: "₹45 Lac",
+    price: "₹45 Lakh",
     priceNumeric: 4500000,
     rate: "₹1,800 / Sq.Ft",
     tag: "JDA APPROVED",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ JDA Approved & Patta", "✅ RERA Registered Township", "60ft Main Asphalt Road", "Instant Registry & Demarcation", "Underground Electrification"],
-    desc: "Premium residential plot situated in a gated township with 24/7 security, lush green parks, and wide asphalt roads. Ideal for luxury duplex construction."
+    image: "/plots/indian_luxury_township.jpg",
+    features: ["✅ JDA Approved Patta", "✅ RERA Registered Township", "60ft Wide Sector Road", "Immediate Registry & Demarcation", "Underground Electricity & Water"],
+    desc: "Premium residential plot situated on Ajmer Road. Features gated boundary, landscaped park, 24/7 security, and wide roads. Ideal for luxury duplex and villa construction."
   },
   {
     id: 2,
     title: "Aerocity Airport Corridor Investment Plot",
-    location: "Panvel, Near Navi Mumbai International Airport",
+    location: "Panvel, Near International Airport, Navi Mumbai",
     city: "Navi Mumbai",
     type: "Plot",
     category: "Luxury",
     size: "3000 Sq.Ft (333 Sq.Yd)",
-    price: "₹85 Lac",
+    price: "₹85 Lakh",
     priceNumeric: 8500000,
     rate: "₹2,833 / Sq.Ft",
     tag: "AIRPORT ZONE",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ RERA Registered", "Upcoming Airport Proximity", "Trans-Harbour Link Connected", "High Capital Appreciation Zone"],
-    desc: "Prime land parcel in Navi Mumbai's booming airport corridor offering immense capital appreciation and future residential viability."
+    image: "/plots/indian_airport_corridor.jpg",
+    features: ["✅ RERA Registered", "Adjacent to International Airport", "Trans-Harbour Sea Link Linked", "High Capital Appreciation Zone"],
+    desc: "Prime freehold land in the Navi Mumbai International Airport corridor delivering superior long-term capital growth."
   },
   {
     id: 3,
-    title: "Gokul Green City Township Plot",
+    title: "Gokul Green City Master Township Plot",
     location: "Alwar Bypass Road, Bhiwadi (NCR)",
     city: "Bhiwadi",
     type: "Plot",
     category: "Residential",
     size: "1800 Sq.Ft (200 Sq.Yd)",
-    price: "₹26 Lac",
+    price: "₹26 Lakh",
     priceNumeric: 2600000,
     rate: "₹1,444 / Sq.Ft",
     tag: "HIGH ROI",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ RERA Approved", "Gated Township with Security", "Wide Sector Roads", "Near Honda & RIICO Industrial Hub"],
-    desc: "Master-planned residential township plot in Bhiwadi's high-demand corridor with immediate bank loan and registry clearance."
+    image: "/plots/indian_villa_plot.jpg",
+    features: ["✅ RERA Approved", "Gated Township with 24/7 Security", "Wide Sector Roads", "Near Honda & RIICO Industrial Hub"],
+    desc: "Master planned township plot in Bhiwadi's prime residential belt. 80% bank loan pre-approved with instant registry."
   },
   {
     id: 4,
@@ -58,29 +58,29 @@ const PROPERTIES_DATA = [
     type: "Plot",
     category: "Residential",
     size: "2250 Sq.Ft (250 Sq.Yd)",
-    price: "₹34 Lac",
+    price: "₹34 Lakh",
     priceNumeric: 3400000,
     rate: "₹1,511 / Sq.Ft",
     tag: "JDA APPROVED",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ JDA Approved & Clear Title", "Instant Demarcation", "Lush Mountain View Gated Layout", "80% Bank Loan Available"],
-    desc: "Scenic residential plots on Ajmer expressway with uninterrupted mountain views, modern clubhouse, and rapid capital growth."
+    image: "/plots/indian_luxury_township.jpg",
+    features: ["✅ JDA Patta & Clear Title", "Instant Physical Demarcation", "Aravali View Gated Layout", "80% Bank Loan Approved"],
+    desc: "Scenic plot overlooking the Aravali Hills on Ajmer-Pushkar Highway. Clubhouse, community parks, and fast-growing neighborhood."
   },
   {
     id: 5,
-    title: "Marble City Highway Commercial & Plot Hub",
-    location: "Main National Highway 8, Kishangarh",
+    title: "Marble City Highway Commercial & Residential Hub",
+    location: "Main National Highway-8, Kishangarh",
     city: "Kishangarh",
     type: "Commercial",
     category: "Commercial",
     size: "5000 Sq.Ft (555 Sq.Yd)",
-    price: "₹65 Lac",
+    price: "₹65 Lakh",
     priceNumeric: 6500000,
     rate: "₹1,300 / Sq.Ft",
     tag: "COMMERCIAL HUB",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ RERA & Government Clear", "100ft Highway Frontage", "Airport Road Connectivity", "Ideal for Showrooms & Logistics"],
-    desc: "High footfall commercial and residential land on Kishangarh NH-8 with tremendous appreciation driven by marble trade and airport traffic."
+    image: "/plots/indian_headquarters.jpg",
+    features: ["✅ RERA & Statutory Clearances", "100ft Highway Frontage", "Kishangarh Airport Road Connectivity", "Ideal for Showrooms, Hotels & Warehouses"],
+    desc: "High-footfall corner commercial plot on NH-8 Kishangarh. High commercial visibility for marble showrooms, hotels, and retail ventures."
   },
   {
     id: 6,
@@ -90,29 +90,29 @@ const PROPERTIES_DATA = [
     type: "Plot",
     category: "Residential",
     size: "1800 Sq.Ft (200 Sq.Yd)",
-    price: "₹32 Lac",
+    price: "₹32 Lakh",
     priceNumeric: 3200000,
     rate: "₹1,777 / Sq.Ft",
     tag: "HOT LAUNCH",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ JDA Approved", "Near Ring Road", "Immediate Registry", "Park Facing Plot", "80% Bank Loan Approved"],
-    desc: "Peaceful residential plots near Jagatpura educational hub, international schools, and the upcoming metro line corridor."
+    image: "/plots/indian_villa_plot.jpg",
+    features: ["✅ JDA Approved Patta", "Close to Ring Road Junction", "Immediate Registry & Mutation", "Park-Facing Corner Plot", "80% Bank Loan Approved"],
+    desc: "Peaceful family residential plot near Jagatpura Education Hub, international schools, and the upcoming metro expansion."
   },
   {
     id: 7,
-    title: "Grand Horizon Commercial Complex Land",
+    title: "Grand Horizon Commercial Land Parcel",
     location: "Tonk Road, Near Airport, Jaipur",
     city: "Jaipur",
     type: "Commercial",
     category: "Commercial",
     size: "5000 Sq.Ft (555 Sq.Yd)",
-    price: "₹1.20 Cr",
+    price: "₹1.20 Crore",
     priceNumeric: 12000000,
     rate: "₹2,400 / Sq.Ft",
     tag: "PREMIUM",
-    image: "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ JDA Patta & RERA", "Commercial Belt Corner Plot", "High Footfall Zone", "12% Assured ROI"],
-    desc: "Prime commercial land ideal for retail showrooms, corporate regional offices, or boutique healthcare centers along Tonk Road."
+    image: "/plots/indian_headquarters.jpg",
+    features: ["✅ JDA Patta & RERA", "Commercial Belt Corner Plot", "High Footfall Arterial Corridor", "12% Assured Returns"],
+    desc: "High-visibility commercial land parcel on Tonk Road main arterial corridor. Best suited for corporate offices, retail hubs, and medical centers."
   },
   {
     id: 8,
@@ -122,361 +122,346 @@ const PROPERTIES_DATA = [
     type: "Plot",
     category: "Residential",
     size: "1500 Sq.Ft (166 Sq.Yd)",
-    price: "₹24 Lac",
+    price: "₹24 Lakh",
     priceNumeric: 2400000,
     rate: "₹1,600 / Sq.Ft",
     tag: "HIGH ROI",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
-    features: ["✅ JDA Approved Patta", "Adjacent to MWC SEZ", "Instant Electricity & Water", "75% Bank Loan Approved"],
-    desc: "Budget-friendly luxury plots adjacent to Mahindra World City SEZ, offering stellar rental yields and rapid capital growth."
+    image: "/plots/indian_luxury_township.jpg",
+    features: ["✅ JDA Approved Patta", "Adjoining Mahindra World City (MWC)", "Ready Electricity, Water & Blacktop Roads", "75% Bank Loan Available"],
+    desc: "Budget-friendly luxury plot near Mahindra SEZ. High rental yield potential and rapid neighborhood development."
   }
 ];
 
 export default function Properties() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const initialLoc = searchParams.get("loc") || "All";
   const initialType = searchParams.get("type") || "All";
   const initialBudget = searchParams.get("budget") || "All";
+  const initialQ = searchParams.get("q") || "";
 
   const [selectedCity, setSelectedCity] = useState(initialLoc);
   const [selectedCategory, setSelectedCategory] = useState(initialType);
   const [selectedBudget, setSelectedBudget] = useState(initialBudget);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialQ);
   const [selectedProperty, setSelectedProperty] = useState(null);
 
-  // Synchronize when URL searchParams change
   useEffect(() => {
     if (searchParams.get("loc")) setSelectedCity(searchParams.get("loc"));
     if (searchParams.get("type")) setSelectedCategory(searchParams.get("type"));
     if (searchParams.get("budget")) setSelectedBudget(searchParams.get("budget"));
+    if (searchParams.get("q")) setSearchQuery(searchParams.get("q"));
   }, [searchParams]);
 
-  // Handle ESC key for modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setSelectedProperty(null);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   const filteredProperties = useMemo(() => {
-    return PROPERTIES_DATA.filter((item) => {
-      // City filter
-      if (selectedCity !== "All" && !item.city.toLowerCase().includes(selectedCity.toLowerCase()) && !selectedCity.toLowerCase().includes(item.city.toLowerCase())) {
-        return false;
-      }
-      // Category / Type filter
-      if (selectedCategory !== "All") {
-        const cat = selectedCategory.toLowerCase();
-        const matchesType = item.type.toLowerCase() === cat;
-        const matchesCategory = item.category.toLowerCase() === cat;
-        if (!matchesType && !matchesCategory) return false;
-      }
-      // Budget filter
-      if (selectedBudget === "10L-25L" && (item.priceNumeric < 1000000 || item.priceNumeric > 2500000)) return false;
-      if (selectedBudget === "25L-50L" && (item.priceNumeric < 2500000 || item.priceNumeric > 5000000)) return false;
-      if (selectedBudget === "50L+" && item.priceNumeric < 5000000) return false;
+    return PROPERTIES_DATA.filter((prop) => {
+      const matchCity =
+        selectedCity === "All" ||
+        prop.city.toLowerCase() === selectedCity.toLowerCase();
 
-      // Search keyword
-      if (searchQuery.trim() !== "") {
-        const q = searchQuery.toLowerCase();
-        const inTitle = item.title.toLowerCase().includes(q);
-        const inLoc = item.location.toLowerCase().includes(q);
-        const inDesc = item.desc.toLowerCase().includes(q);
-        if (!inTitle && !inLoc && !inDesc) return false;
+      const matchCategory =
+        selectedCategory === "All" ||
+        prop.category.toLowerCase() === selectedCategory.toLowerCase() ||
+        prop.type.toLowerCase() === selectedCategory.toLowerCase();
+
+      let matchBudget = true;
+      if (selectedBudget === "10L-25L") {
+        matchBudget = prop.priceNumeric >= 1000000 && prop.priceNumeric <= 2500000;
+      } else if (selectedBudget === "25L-50L") {
+        matchBudget = prop.priceNumeric > 2500000 && prop.priceNumeric <= 5000000;
+      } else if (selectedBudget === "50L+") {
+        matchBudget = prop.priceNumeric > 5000000;
       }
 
-      return true;
+      const matchSearch =
+        searchQuery === "" ||
+        prop.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prop.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prop.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        prop.desc.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchCity && matchCategory && matchBudget && matchSearch;
     });
   }, [selectedCity, selectedCategory, selectedBudget, searchQuery]);
 
+  const resetFilters = () => {
+    setSelectedCity("All");
+    setSelectedCategory("All");
+    setSelectedBudget("All");
+    setSearchQuery("");
+    setSearchParams({});
+  };
+
   return (
-    <div className="pageContainer">
-      {/* PAGE HEADER */}
-      <section className="pageHeader">
-        <div className="headerOverlay"></div>
-        <div className="headerContent">
-          <p className="smallTitle">✨ RAJU VERMA • GOKUL KRIPA SALES & MARKETING</p>
-          <h1>Where Vision <span>Becomes Value.</span></h1>
-          <p className="headerSubtext">
-            Explore 100% JDA Approved & RERA Registered Township Plots across <strong>Jaipur • Navi Mumbai • Bhiwadi • Ajmer • Kishangarh</strong> with clear title deeds.
+    <div className="pageContainer mbThemePage">
+      {/* FLOATING QUICK CONTACT PILL */}
+      <div className="floatingContactPill">
+        <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20verified%20plots." target="_blank" rel="noopener noreferrer" className="floatWaBtn">
+          <span className="waIcon">💬</span>
+          <span className="waText">Chat on WhatsApp</span>
+        </a>
+        <a href="tel:+919876543210" className="floatCallBtn">
+          <span className="callIcon">📞</span>
+          <span className="callText">+91 98765 43210</span>
+        </a>
+      </div>
+
+      {/* MAGICBRICKS HEADER BANNER */}
+      <section className="mbPortalHeader">
+        <div className="mbPortalHeaderInner">
+          <div className="mbPortalBadge">
+            <span className="mbLiveDot"></span>
+            <span>100% Government Approved • JDA & RERA Certified Plots</span>
+          </div>
+          <h1>Verified Plots & Master Townships</h1>
+          <p>
+            100% clear title, physical on-ground demarcation, and ready-to-register freehold plots across <strong>Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh</strong>.
           </p>
         </div>
       </section>
 
-      {/* FILTER CONTROLS */}
-      <section className="filterSection">
-        <div className="filterContainer">
-          <div className="filterTopRow">
-            <div className="searchBar">
-              <span className="searchIcon">🔍</span>
-              <input
-                type="text"
-                placeholder="Search by location, township name, size, keyword..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button className="clearBtn" onClick={() => setSearchQuery("")}>✕</button>
-              )}
-            </div>
-
-            <div className="categoryTabs">
-              {[
-                { label: "All Properties", value: "All" },
-                { label: "🏡 Plots / Land", value: "Plot" },
-                { label: "🏢 Commercial", value: "Commercial" },
-                { label: "🏛️ Residential", value: "Residential" },
-                { label: "⭐ Luxury Estates", value: "Luxury" }
-              ].map((tab) => (
-                <button
-                  key={tab.value}
-                  className={`tabBtn ${selectedCategory.toLowerCase() === tab.value.toLowerCase() ? "activeTab" : ""}`}
-                  onClick={() => setSelectedCategory(tab.value)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+      {/* MAGICBRICKS SEARCH & FILTER TOOLBAR */}
+      <section className="mbFilterToolbarSection">
+        <div className="mbFilterToolbarCard">
+          {/* Top City Tabs */}
+          <div className="mbCityFilterPills">
+            <span className="mbFilterGroupLabel">Select City:</span>
+            {["All", "Jaipur", "Navi Mumbai", "Bhiwadi", "Ajmer", "Kishangarh"].map((city) => (
+              <button
+                key={city}
+                type="button"
+                className={`mbCityPillBtn ${selectedCity === city ? "active" : ""}`}
+                onClick={() => setSelectedCity(city)}
+              >
+                {city === "All" ? "📍 All 5 Cities" : `📍 ${city}`}
+              </button>
+            ))}
           </div>
 
-          <div className="filterBottomRow">
-            <div className="filterSelectGroup">
-              <label>Location / City</label>
-              <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
-                <option value="All">All Cities (Jaipur, Navi Mumbai, Bhiwadi, Ajmer, Kishangarh)</option>
-                <option value="Jaipur">Jaipur (Ajmer Rd, Jagatpura, Ring Rd)</option>
-                <option value="Navi Mumbai">Navi Mumbai (Panvel, Airport Corridor)</option>
-                <option value="Bhiwadi">Bhiwadi (NCR Industrial Belt)</option>
-                <option value="Ajmer">Ajmer (Expressway, Pushkar Bypass)</option>
-                <option value="Kishangarh">Kishangarh (Marble City Highway)</option>
+          {/* Filter Dropdowns Grid */}
+          <div className="mbFilterInputsGrid">
+            <div className="mbInputGroup">
+              <label>Search Location / Keyword</label>
+              <input
+                type="text"
+                placeholder="e.g. Ajmer Road, Airport, Ring Road..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="mbTextInput"
+              />
+            </div>
+
+            <div className="mbInputGroup">
+              <label>Property Type</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="mbSelectInput"
+              >
+                <option value="All">All Types</option>
+                <option value="Residential">Residential Plots</option>
+                <option value="Commercial">Commercial Land</option>
+                <option value="Luxury">Luxury / Airport Enclave</option>
               </select>
             </div>
 
-            <div className="filterSelectGroup">
+            <div className="mbInputGroup">
               <label>Budget Range</label>
-              <select value={selectedBudget} onChange={(e) => setSelectedBudget(e.target.value)}>
-                <option value="All">Any Budget Range</option>
-                <option value="10L-25L">₹10 Lakh - ₹25 Lakh</option>
-                <option value="25L-50L">₹25 Lakh - ₹50 Lakh</option>
+              <select
+                value={selectedBudget}
+                onChange={(e) => setSelectedBudget(e.target.value)}
+                className="mbSelectInput"
+              >
+                <option value="All">All Budgets</option>
+                <option value="10L-25L">₹10 Lakh – ₹25 Lakh</option>
+                <option value="25L-50L">₹25 Lakh – ₹50 Lakh</option>
                 <option value="50L+">₹50 Lakh & Above</option>
               </select>
             </div>
 
-            <button
-              className="resetFilterBtn"
-              onClick={() => {
-                setSelectedCity("All");
-                setSelectedCategory("All");
-                setSelectedBudget("All");
-                setSearchQuery("");
-              }}
-            >
-              Reset Filters
-            </button>
+            <div className="mbFilterResetCol">
+              <button type="button" onClick={resetFilters} className="mbResetBtn">
+                ↻ Reset Filters
+              </button>
+            </div>
+          </div>
+
+          {/* Active Filter Badges */}
+          <div className="mbActiveFiltersRow">
+            <span className="mbActiveCount">
+              Total <strong>{filteredProperties.length}</strong> verified plots available
+            </span>
+            {(selectedCity !== "All" || selectedCategory !== "All" || selectedBudget !== "All" || searchQuery !== "") && (
+              <div className="mbFilterBadges">
+                {selectedCity !== "All" && <span className="mbActiveBadge">City: {selectedCity}</span>}
+                {selectedCategory !== "All" && <span className="mbActiveBadge">Type: {selectedCategory}</span>}
+                {selectedBudget !== "All" && <span className="mbActiveBadge">Budget: {selectedBudget}</span>}
+                {searchQuery !== "" && <span className="mbActiveBadge">Keyword: "{searchQuery}"</span>}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* PROPERTY LISTINGS */}
-      <section className="propertiesSection">
-        <div className="resultsBar">
-          <p>
-            Showing <strong>{filteredProperties.length}</strong> verified luxury properties in portfolio
-          </p>
-        </div>
-
-        {filteredProperties.length === 0 ? (
-          <div className="noResultsBox">
-            <h3>No Properties Match Your Search</h3>
-            <p>Try broadening your filter criteria or click below to view all our verified land plots.</p>
-            <button
-              className="goldBtn"
-              onClick={() => {
-                setSelectedCity("All");
-                setSelectedCategory("All");
-                setSelectedBudget("All");
-                setSearchQuery("");
-              }}
-            >
-              Reset Filters & View All
-            </button>
-          </div>
-        ) : (
-          <div className="propertyGrid">
-            {filteredProperties.map((prop) => (
-              <div className="propertyCard" key={prop.id}>
-                <div className="propertyImage">
-                  <img
-                    src={prop.image}
-                    alt={prop.title}
-                    onError={(e) => {
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80";
-                    }}
-                  />
-                  <span className="tag">{prop.tag}</span>
-                  <span className="propertyTypeBadge">{prop.category}</span>
-                </div>
-
-                <div className="propertyInfo">
-                  <p className="location">📍 {prop.location}</p>
-                  <h3>{prop.title}</h3>
-                  <p className="cardShortDesc">{prop.desc}</p>
-
-                  <div className="featuresPills">
-                    {prop.features.slice(0, 3).map((feat, idx) => (
-                      <span key={idx} className="featPill">✓ {feat}</span>
-                    ))}
+      {/* PROPERTIES LISTINGS GRID */}
+      <section className="mbPropertiesGridSection">
+        <div className="mbPropertiesContainer">
+          {filteredProperties.length === 0 ? (
+            <div className="mbNoResultsBox">
+              <div className="mbNoResultsIcon">🔍</div>
+              <h3>No Matching Plots Found</h3>
+              <p>Please adjust your keyword, city, or budget range to view available inventory.</p>
+              <button onClick={resetFilters} className="mbPrimaryGoldBtn">
+                Reset All Filters
+              </button>
+            </div>
+          ) : (
+            <div className="mbPropertyCardsGrid">
+              {filteredProperties.map((property) => (
+                <div className="mbPropertyCard" key={property.id}>
+                  {/* Image with Badges */}
+                  <div className="mbPropImgBox">
+                    <img src={property.image} alt={property.title} />
+                    <span className="mbPropVerified">✓ JDA/RERA VERIFIED</span>
+                    <span className="mbPropTypeBadge">{property.tag}</span>
+                    <span className="mbPropPriceTag">{property.price}</span>
                   </div>
 
-                  <div className="propertyDetails">
-                    <span>📏 {prop.size}</span>
-                    <span>🏷️ {prop.rate}</span>
-                  </div>
-
-                  <div className="cardBottom">
-                    <div>
-                      <span className="priceLabel">Starting Price</span>
-                      <strong>{prop.price}</strong>
+                  {/* Body Info */}
+                  <div className="mbPropBody">
+                    <div className="mbPropPriceRow">
+                      <div className="mbPropPriceMain">
+                        <strong>{property.price}</strong>
+                      </div>
                     </div>
 
-                    <div className="cardActionBtns">
-                      <button
-                        className="quickViewBtn"
-                        onClick={() => setSelectedProperty(prop)}
+                    <h3 className="mbPropTitle">{property.title}</h3>
+                    <p className="mbPropLocation">📍 {property.location}</p>
+                    <p className="mbPropDesc">{property.desc}</p>
+
+                    {/* Features Chips */}
+                    <div className="mbPropPills">
+                      {property.features.slice(0, 3).map((feat, fIdx) => (
+                        <span key={fIdx} className="mbPropPill">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Seller Advisor Row */}
+                    <div className="mbPropSellerRow">
+                      <div className="mbSellerInfo">
+                        <span className="mbSellerBadge">Direct Developer Advisory</span>
+                        <span className="mbSellerName">Raju Verma • Gokul Kripa</span>
+                      </div>
+                      <span className="mbZeroBrok">0% Brokerage</span>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="mbPropCardActions">
+                      <button 
+                        type="button"
+                        className="mbPropDetailBtn"
+                        onClick={() => setSelectedProperty(property)}
                       >
-                        Details
+                        📋 View Layout
                       </button>
-                      <Link to={`/contact?property=${encodeURIComponent(prop.title)}`} className="inquireBtn">
-                        Book Visit →
+
+                      <Link 
+                        to={`/contact?property=${encodeURIComponent(property.title)}`}
+                        className="mbPropBookBtn"
+                      >
+                        🚗 Site Visit
                       </Link>
+
+                      <a 
+                        href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20${encodeURIComponent(property.title)}%20(${encodeURIComponent(property.location)}).`}
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="mbPropWaBtn"
+                        title="WhatsApp Inquiry"
+                      >
+                        💬
+                      </a>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
-                  <div className="propertyCardWaRow">
-                    <a
-                      href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hello Plot With Property, please send brochure, video tour and GPS pin for "${prop.title}" (${prop.location}).`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cardWaLink"
-                    >
-                      💬 WhatsApp Brochure & Live Pin
-                    </a>
-                  </div>
+      {/* PROPERTY DETAILS MODAL */}
+      {selectedProperty && (
+        <div className="mbModalBackdrop" onClick={() => setSelectedProperty(null)}>
+          <div className="mbModalContent" onClick={(e) => e.stopPropagation()}>
+            <button className="mbModalCloseBtn" onClick={() => setSelectedProperty(null)}>✕</button>
+            
+            <div className="mbModalGrid">
+              <div className="mbModalImgCol">
+                <img src={selectedProperty.image} alt={selectedProperty.title} className="mbModalMainImg" />
+                <div className="mbModalImgBadge">{selectedProperty.tag}</div>
+                <div className="mbModalPriceBanner">
+                  <strong>{selectedProperty.price}</strong>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-      </section>
 
-      {/* THOUGHTS & ASSURANCE ON LAND OWNERSHIP */}
-      <section className="wisdomSection">
-        <div className="sectionHeading">
-          <p>THE POWER OF LAND</p>
-          <h2>Thoughts on <span>Securing Real Estate</span></h2>
-          <p className="sectionSubDesc">
-            Why visionary families and high-net-worth investors allocate wealth into verified freehold land.
-          </p>
-          <div className="goldLine"></div>
-        </div>
+              <div className="mbModalDetailsCol">
+                <span className="mbModalGovTag">🛡️ 100% JDA & RERA Approved Patta</span>
+                <h2>{selectedProperty.title}</h2>
+                <p className="mbModalLoc">📍 {selectedProperty.location} ({selectedProperty.city})</p>
+                <p className="mbModalDesc">{selectedProperty.desc}</p>
 
-        <div className="wisdomGrid">
-          <div className="wisdomCard">
-            <span className="quoteMark">“</span>
-            <p className="quoteText">
-              Real estate cannot be lost or stolen, nor can it be carried away. Purchased with common sense and clear title, it is about the safest investment in the world.
-            </p>
-            <div className="quoteAuthorBox">
-              <div className="goldAuthorLine"></div>
-              <h4>Franklin D. Roosevelt</h4>
-              <p>Statesman & Real Estate Pioneer</p>
-            </div>
-          </div>
+                <div className="mbModalSpecsGrid">
+                  <div className="mbSpecBox">
+                    <span className="mbSpecLabel">Category</span>
+                    <strong>{selectedProperty.category} Plot</strong>
+                  </div>
+                  <div className="mbSpecBox">
+                    <span className="mbSpecLabel">Approvals</span>
+                    <strong>100% JDA / RERA</strong>
+                  </div>
+                  <div className="mbSpecBox">
+                    <span className="mbSpecLabel">Possession</span>
+                    <strong>Immediate Registry & Possession</strong>
+                  </div>
+                  <div className="mbSpecBox">
+                    <span className="mbSpecLabel">Brokerage</span>
+                    <strong style={{ color: "#2E6B52" }}>0% (Direct Developer Price)</strong>
+                  </div>
+                </div>
 
-          <div className="wisdomCard">
-            <span className="quoteMark">“</span>
-            <p className="quoteText">
-              At Plot With Property, every single plot undergoes rigorous 30-year legal auditing and physical on-ground demarcation so you invest with 100% peace of mind.
-            </p>
-            <div className="quoteAuthorBox">
-              <div className="goldAuthorLine"></div>
-              <h4>PWP Legal & Advisory Panel</h4>
-              <p>Rajasthan & NCR Division</p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="mbModalFeatures">
+                  <h4>Key Township Features:</h4>
+                  <ul>
+                    {selectedProperty.features.map((feat, idx) => (
+                      <li key={idx}>{feat}</li>
+                    ))}
+                  </ul>
+                </div>
 
-      {/* QUICK MODAL VIEW */}
-      {selectedProperty && (
-        <div className="modalOverlay" onClick={() => setSelectedProperty(null)}>
-          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="modalCloseBtn"
-              onClick={() => setSelectedProperty(null)}
-              aria-label="Close dialog"
-            >
-              ✕
-            </button>
-            <div className="modalImage">
-              <img src={selectedProperty.image} alt={selectedProperty.title} />
-              <span className="tag">{selectedProperty.tag}</span>
-            </div>
-            <div className="modalBody">
-              <p className="location">📍 {selectedProperty.location}</p>
-              <h2>{selectedProperty.title}</h2>
-              <div className="modalPriceRow">
-                <p className="modalPrice">{selectedProperty.price}</p>
-                <span className="modalRate">({selectedProperty.rate})</span>
-              </div>
-              <p className="modalDesc">{selectedProperty.desc}</p>
-
-              <h4>Property Highlights & Specifications</h4>
-              <ul className="modalHighlights">
-                {selectedProperty.features.map((f, i) => (
-                  <li key={i}>✅ {f}</li>
-                ))}
-                <li>📏 Dimension / Size: {selectedProperty.size}</li>
-                <li>🏛️ Classification: {selectedProperty.type}</li>
-              </ul>
-
-              <div className="modalActions">
-                <Link
-                  to={`/contact?property=${encodeURIComponent(selectedProperty.title)}`}
-                  className="goldBtn"
-                  onClick={() => setSelectedProperty(null)}
-                >
-                  Schedule Site Visit
-                </Link>
-                <a
-                  href={`https://wa.me/919876543210?text=${encodeURIComponent(`Hello PWP, I am interested in "${selectedProperty.title}". Please share complete documentation.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="outlineBtn"
-                >
-                  💬 WhatsApp Details
-                </a>
+                <div className="mbModalActions">
+                  <Link 
+                    to={`/contact?property=${encodeURIComponent(selectedProperty.title)}`}
+                    className="mbPrimaryGoldBtn"
+                    onClick={() => setSelectedProperty(null)}
+                  >
+                    🚗 Book Free AC Cab Site Visit →
+                  </Link>
+                  <a
+                    href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20please%20share%20the%20layout%20plan%20for%20${encodeURIComponent(selectedProperty.title)}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mbWaBtn"
+                  >
+                    💬 Request Layout Plan on WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
-
-      {/* CTA FOOTER BANNER */}
-      <section className="cta">
-        <div>
-          <p>CANNOT FIND WHAT YOU ARE LOOKING FOR?</p>
-          <h2>Custom Plot & Land <span>Sourcing</span></h2>
-          <p style={{ color: "#6B7280", marginTop: "10px", maxWidth: "600px" }}>
-            Tell us your exact dimension requirement, preferred location, and budget. Our land acquisition specialists will source the perfect verified match.
-          </p>
-        </div>
-        <Link to="/contact" className="goldBtn">
-          Request Custom Land Search →
-        </Link>
-      </section>
     </div>
   );
 }

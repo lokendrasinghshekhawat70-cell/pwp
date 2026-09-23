@@ -7,20 +7,20 @@
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light;
-  background-color: #11161B;
-  color: #1A1D20;
+  background-color: #F8F9FA;
+  color: #202732;
 }
 
 html {
-  background: #11161B;
+  background: #F8F9FA;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #11161B;
-  color: #1A1D20;
+  background: #F8F9FA;
+  color: #202732;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -30,5 +30,6 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: #11161B;
+  background: #F8F9FA;
 }
+

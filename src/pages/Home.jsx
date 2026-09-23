@@ -1,116 +1,210 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import rajuVermaImg from "../assets/team/raju_verma.jpg";
+import rohitSharmaImg from "../assets/team/rohit_sharma.jpg";
+import ananyaMehraImg from "../assets/team/ananya_mehra.jpg";
+import sureshChoudharyImg from "../assets/team/suresh_choudhary.jpg";
 
 export default function Home() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Plot");
   const [filters, setFilters] = useState({
-    location: "Jaipur",
+    location: "All",
+    searchQuery: "",
     budget: "All",
+    propType: "All",
   });
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/properties?loc=${filters.location}&type=${activeTab}&budget=${filters.budget}`);
+    const queryParams = new URLSearchParams();
+    if (filters.location && filters.location !== "All") queryParams.set("loc", filters.location);
+    if (activeTab && activeTab !== "All") queryParams.set("type", activeTab);
+    if (filters.budget && filters.budget !== "All") queryParams.set("budget", filters.budget);
+    if (filters.searchQuery) queryParams.set("q", filters.searchQuery);
+    navigate(`/properties?${queryParams.toString()}`);
   };
 
   const primeLocations = [
     {
       name: "Ajmer Road & Ring Road Corridor",
       city: "Jaipur",
-      growth: "+18% YoY Growth",
+      growth: "+18% Annual Appreciation",
       tag: "HIGH ROI",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-      desc: "Jaipur's premier gated townships with JDA approval, 60ft-100ft sector roads & SEZ connectivity."
+      image: "/plots/indian_luxury_township.jpg",
+      desc: "Jaipur's premier gated townships featuring JDA Patta, 60ft to 100ft wide sector roads, and direct SEZ connectivity.",
+      plotsCount: "120+ Available Plots"
     },
     {
-      name: "Panvel & Airport Growth Zone",
+      name: "Panvel & Navi Mumbai Airport Zone",
       city: "Navi Mumbai",
-      growth: "+22% YoY Growth",
+      growth: "+22% Annual Appreciation",
       tag: "MEGA INFRA",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80",
-      desc: "High-yield investment plots near upcoming international airport, trans-harbour link & metro line."
+      image: "/plots/indian_airport_corridor.jpg",
+      desc: "Prime investment land parcels adjacent to the upcoming International Airport, Trans-Harbour Link and coastal highway.",
+      plotsCount: "85+ Available Plots"
     },
     {
-      name: "Alwar Highway & Industrial Belt",
+      name: "Alwar Highway & RIICO Industrial Belt",
       city: "Bhiwadi",
-      growth: "+16% YoY Growth",
+      growth: "+16% Annual Appreciation",
       tag: "NCR BOOM",
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80",
-      desc: "Fast-developing NCR industrial corridor offering rapid residential expansion & guaranteed rental yields."
+      image: "/plots/indian_villa_plot.jpg",
+      desc: "Fastest growing industrial & residential corridor adjoining Delhi-NCR offering secure rental yields and capital growth.",
+      plotsCount: "95+ Available Plots"
     },
     {
-      name: "Expressway & Marble City Belt",
+      name: "National Highway-8 Marble City Corridor",
       city: "Kishangarh & Ajmer",
-      growth: "+15% YoY Growth",
-      tag: "STRATEGIC",
-      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80",
-      desc: "Prime connectivity along National Highway with airport proximity and booming commercial hubs."
+      growth: "+15% Annual Appreciation",
+      tag: "STRATEGIC HUB",
+      image: "/plots/indian_headquarters.jpg",
+      desc: "Prime highway commercial and residential land parcels with direct airport and expressway connectivity.",
+      plotsCount: "110+ Available Plots"
     }
   ];
+
+  // 6 Verified Featured Properties for Home
+  const featuredProperties = [
+    {
+      id: 1,
+      title: "Royal Enclave Gated Township Plot",
+      location: "Main Ajmer Road, Jaipur",
+      city: "Jaipur",
+      price: "₹45 Lakh",
+      tag: "JDA APPROVED",
+      image: "/plots/indian_luxury_township.jpg",
+      pills: ["✓ JDA Approved", "✓ 60ft Sector Road", "✓ 80% Bank Loan"],
+      desc: "Premium residential plot with gated boundary, park, 24/7 security, and wide roads. Ideal for luxury duplex construction."
+    },
+    {
+      id: 2,
+      title: "Aerocity Airport Corridor Investment Plot",
+      location: "Panvel, Near International Airport, Navi Mumbai",
+      city: "Navi Mumbai",
+      price: "₹85 Lakh",
+      tag: "AIRPORT ZONE",
+      image: "/plots/indian_airport_corridor.jpg",
+      pills: ["✓ RERA Registered", "✓ Trans-Harbour Linked", "✓ High Appreciation"],
+      desc: "Prime freehold land in the Navi Mumbai International Airport corridor delivering superior capital growth."
+    },
+    {
+      id: 3,
+      title: "Gokul Green City Master Township Plot",
+      location: "Alwar Bypass Road, Bhiwadi (NCR)",
+      city: "Bhiwadi",
+      price: "₹26 Lakh",
+      tag: "HIGH ROI",
+      image: "/plots/indian_villa_plot.jpg",
+      pills: ["✓ RERA Approved", "✓ Gated Township", "✓ Near Honda Hub"],
+      desc: "Planned master township plot in Bhiwadi's prime residential belt. 80% bank loan pre-approved with instant registry."
+    },
+    {
+      id: 4,
+      title: "Emerald Green Township Residential Plot",
+      location: "Jagatpura, Ring Road Junction, Jaipur",
+      city: "Jaipur",
+      price: "₹32 Lakh",
+      tag: "HOT LAUNCH",
+      image: "/plots/indian_villa_plot.jpg",
+      pills: ["✓ JDA Patta", "✓ Ring Road Junction", "✓ Park Facing"],
+      desc: "Peaceful family residential plot near Jagatpura Education Hub, international schools, and metro expansion."
+    },
+    {
+      id: 5,
+      title: "Marble City Highway Commercial Hub",
+      location: "Main National Highway-8, Kishangarh",
+      city: "Kishangarh & Ajmer",
+      price: "₹65 Lakh",
+      tag: "COMMERCIAL HUB",
+      image: "/plots/indian_headquarters.jpg",
+      pills: ["✓ 100ft Highway Front", "✓ RERA Clearances", "✓ 12% Assured ROI"],
+      desc: "High-footfall corner commercial plot on NH-8 Kishangarh. High visibility for marble showrooms and retail ventures."
+    },
+    {
+      id: 6,
+      title: "Vatika SEZ Elite Township Plots",
+      location: "Ajmer Road, Near Mahindra World City, Jaipur",
+      city: "Jaipur",
+      price: "₹24 Lakh",
+      tag: "SEZ CORRIDOR",
+      image: "/plots/indian_luxury_township.jpg",
+      pills: ["✓ JDA Approved", "✓ Near Mahindra SEZ", "✓ 75% Bank Loan"],
+      desc: "Budget-friendly luxury plot adjoining Mahindra World City. High rental yield potential and rapid infrastructure growth."
+    }
+  ];
+
+  const [selectedCityFilter, setSelectedCityFilter] = useState("All");
+
+  const filteredHomeProperties = useMemo(() => {
+    if (selectedCityFilter === "All") return featuredProperties;
+    return featuredProperties.filter(
+      (p) => p.city.toLowerCase().includes(selectedCityFilter.toLowerCase())
+    );
+  }, [selectedCityFilter, featuredProperties]);
 
   const clientReviews = [
     {
       id: 1,
-      name: "Rajendra Singhania",
-      role: "Industrialist & NRI Investor",
-      location: "Jaipur Ajmer Road Plot",
+      name: "Shri Rajendra Singhania & Family",
+      role: "Industrialist & Investor",
+      location: "Ajmer Road Township Plot, Jaipur (277 Sq.Yd)",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      review: "Purchased a 500 Sq.Yd JDA-approved plot through Raju Verma Sir (Gokul Kripa). Complete peace of mind with 100% legal verification and immediate registry. Truly 'Where Vision Becomes Value'!"
+      avatar: "/reviews/rajendra_singhania.jpg",
+      review: "Under the guidance of Raju Verma ji (Gokul Kripa), we purchased a 2500 Sq.Ft JDA approved plot. We received complete 30-year legal audit documents, on-ground boundary pillars, and immediate registry. Our entire family is thoroughly delighted."
     },
     {
       id: 2,
-      name: "Dr. Meenakshi Sharma",
-      role: "Senior Surgeon",
-      location: "Navi Mumbai Investment Plot",
+      name: "Dr. Sunita Agarwal",
+      role: "Senior Surgeon & Real Estate Investor",
+      location: "Panvel Airport Zone Plot, Navi Mumbai",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-      review: "Raju Verma's guidance for land investment near Navi Mumbai Airport has yielded fantastic appreciation. Reliable, transparent, and prompt. Highly recommended!"
+      avatar: "/reviews/sunita_agarwal.jpg",
+      review: "Raju Verma ji provided spot-on strategic advisory for land investment near the new Navi Mumbai Airport. The 30-year mother deed verification and transparent handover made the process completely smooth. Highly recommended!"
     },
     {
       id: 3,
-      name: "Vikram Malhotra",
-      role: "CEO, Tech Horizon",
-      location: "Bhiwadi Commercial Hub",
+      name: "Vikram Malhotra & Family",
+      role: "IT Director & Land Investor",
+      location: "Green City Master Township, Bhiwadi",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-      review: "Gokul Kripa Sales & Marketing provided on-ground demarcation and clear RERA registered titles. Professional real estate advisory at its finest."
+      avatar: "/reviews/vikram_malhotra.jpg",
+      review: "Gokul Kripa Sales & Marketing provided prompt physical demarcation and clear RERA title documents. Truly the most dependable name for land and plot investment in Rajasthan and NCR."
     },
     {
       id: 4,
       name: "Col. Sanjeev Rawat (Retd.)",
-      role: "Defense Veteran",
-      location: "Ajmer-Kishangarh Expressway",
+      role: "Indian Armed Forces Veteran",
+      location: "NH-8 Expressway Plot, Ajmer-Kishangarh",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
-      review: "Clean paperwork, zero hidden costs, and genuine guidance from Raju Verma. In the real estate industry, finding trustworthy experts like him is rare."
+      avatar: "/reviews/sanjeev_rawat.jpg",
+      review: "Crystal clear legal documentation, zero hidden charges, and Raju Verma ji's personal dedication. Finding such genuine and professional land advisory in real estate is truly exceptional."
     }
   ];
 
   const marketInsights = [
     {
       id: 1,
-      date: "Sep 2026",
-      readTime: "4 Min Read",
+      date: "September 2026",
+      readTime: "4 min read",
       title: "Why Jaipur & Kishangarh Expressway is the Next Real Estate Goldmine",
-      desc: "Infrastructure upgrades, DMIC logistics parks, and rapid connectivity make these township plots a high-growth asset for 2026-2030.",
+      desc: "DMIC freight corridor, 200ft Ring Road junctions, and 6-lane expressways driving exponential appreciation in plotted townships.",
       image: "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: 2,
-      date: "Aug 2026",
-      readTime: "5 Min Read",
-      title: "Complete Checklist for JDA & RERA Township Land Legal Due Diligence",
-      desc: "Essential documents, 30-year mother deed verification, and registry precautions every smart land buyer must know.",
+      date: "August 2026",
+      readTime: "5 min read",
+      title: "Essential Checklist for 30-Year Mother Deed & JDA Patta Verification",
+      desc: "Crucial legal due diligence steps for smart buyers covering revenue records, Mutation (Dakhil Kharij), and RERA approval.",
       image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: 3,
-      date: "Jul 2026",
-      readTime: "3 Min Read",
-      title: "Navi Mumbai vs NCR Bhiwadi: Where to Allocate Your Growth Capital?",
-      desc: "Comparative analysis of rental yields, upcoming airport infrastructure trajectories, and long-term capital gains.",
+      date: "July 2026",
+      readTime: "3 min read",
+      title: "Navi Mumbai Airport Corridor vs. Bhiwadi NCR: Where to Invest?",
+      desc: "Comparative analysis of rental yields, infrastructure pace, and 5-year capital appreciation trends in prime growth hubs.",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
     }
   ];
@@ -119,62 +213,91 @@ export default function Home() {
   const [touchStartX, setTouchStartX] = useState(null);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
+  // FAQ state on home
+  const [openFaqHome, setOpenFaqHome] = useState(null);
+
+  const homeFaqs = [
+    {
+      q: "Are all plots listed on Plot With Property 100% JDA and RERA approved?",
+      a: "Yes. Every single plot in our master townships carries an authentic statutory government JDA Patta and RERA registration. We provide a complete 30-year legal audit report before token booking."
+    },
+    {
+      q: "How does the complimentary Doorstep AC Cab Site Visit work?",
+      a: "We arrange a free chauffeur-driven AC cab to pick up you and your entire family directly from your home, take you for a comprehensive on-ground inspection of our gated townships, and drop you back safely with zero obligation."
+    },
+    {
+      q: "Can I get a bank loan on these plotted developments?",
+      a: "Yes. All our townships are pre-approved for up to 80% home/land loans by premier banks including State Bank of India (SBI), HDFC Bank, ICICI Bank, and Axis Bank with expedited sanctioning."
+    },
+    {
+      q: "What is the process for physical possession and boundary demarcation?",
+      a: "Every plot is physically demarcated on-ground with reinforced concrete corner pillars and GPS coordinates. You receive instant physical handover followed by immediate registered sale deed execution and mutation (Dakhil Kharij)."
+    },
+    {
+      q: "Is there any brokerage or hidden charge?",
+      a: "Zero brokerage (0%). You get direct developer pricing with complete transparency on government stamp duty and statutory fees."
+    }
+  ];
+
   const heroTownships = [
     {
       id: "jaipur",
       city: "Jaipur",
-      title: "Royal Palm Smart Township",
-      corridor: "Ajmer Road & Ring Road Corridor",
+      title: "Royal Palm Smart Gated Township",
+      corridor: "Ajmer Road & 200ft Ring Road Junction, Jaipur",
       price: "₹18.50 Lakh",
       priceUnit: "onwards",
-      growth: "+18% YoY Growth",
-      badge: "JDA APPROVED • IMMEDIATE REGISTRY",
-      tag: "🔥 85% SOLD OUT",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
-      features: ["60ft - 100ft Sector Roads", "Underground Electrification", "Physical Demarcation & Patta"]
+      emi: "Starting at ₹12,499/month easy EMI*",
+      growth: "+18% Annual Appreciation",
+      badge: "JDA Approved • Instant Patta & Registry",
+      tag: "🔥 85% Sold Out",
+      image: "/plots/indian_luxury_township.jpg",
+      features: ["60ft to 100ft wide asphalt sector roads", "Underground electricity, water & drainage", "On-ground boundary pillars with instant possession"]
     },
     {
       id: "navi-mumbai",
       city: "Navi Mumbai",
       title: "Aerotropolis Gold Enclave",
-      corridor: "Panvel & Airport Growth Corridor",
+      corridor: "Panvel & International Airport Growth Corridor",
       price: "₹42.00 Lakh",
       priceUnit: "onwards",
-      growth: "+22% YoY Growth",
-      badge: "MEGA INFRA • HIGH ROI",
-      tag: "⭐ AIRPORT PROXIMITY",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85",
-      features: ["15 Mins to New International Airport", "Clear Title Freehold Land", "High Capital Appreciation"]
+      emi: "Starting at ₹28,990/month easy EMI*",
+      growth: "+22% Annual Appreciation",
+      badge: "RERA Registered • High Appreciation",
+      tag: "⭐ Near Airport",
+      image: "/plots/indian_airport_corridor.jpg",
+      features: ["Just 15 minutes from upcoming International Airport", "Clear title freehold land parcels", "Rapidly developing prime residential hub"]
     },
     {
       id: "bhiwadi",
       city: "Bhiwadi",
-      title: "Industrial Horizon Township",
-      corridor: "Alwar Highway & NCR Industrial Belt",
+      title: "Industrial Horizon Master Township",
+      corridor: "Alwar Bypass Road & NCR Industrial Corridor",
       price: "₹14.80 Lakh",
       priceUnit: "onwards",
-      growth: "+16% YoY Growth",
-      badge: "RERA REGISTERED • NCR ZONE",
-      tag: "⚡ HIGH RENTAL YIELD",
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
-      features: ["Direct Highway Connectivity", "DMIC Logistics Corridor", "Gated Security & Water Line"]
+      emi: "Starting at ₹9,850/month easy EMI*",
+      growth: "+16% Annual Appreciation",
+      badge: "RERA Approved • NCR Zone",
+      tag: "⚡ High Rental Yield",
+      image: "/plots/indian_villa_plot.jpg",
+      features: ["Direct national highway frontage & wide avenues", "Adjoining Honda & RIICO industrial hubs", "Gated perimeter with 24/7 security"]
     },
     {
       id: "kishangarh",
       city: "Kishangarh & Ajmer",
-      title: "Emerald Expressway Hub",
-      corridor: "Expressway & Marble City Belt",
+      title: "Emerald Expressway Commercial Hub",
+      corridor: "National Highway-8 & Airport Corridor",
       price: "₹16.20 Lakh",
       priceUnit: "onwards",
-      growth: "+15% YoY Growth",
-      badge: "HIGHWAY FRONTAGE • INSTANT PATTA",
-      tag: "💎 STRATEGIC HUB",
-      image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=85",
-      features: ["National Highway Frontage", "Airport Corridor Access", "Rapid Commercial Expansion"]
+      emi: "Starting at ₹10,950/month easy EMI*",
+      growth: "+15% Annual Appreciation",
+      badge: "Highway Front • Instant Mutation",
+      tag: "💎 Prime Commercial Hub",
+      image: "/plots/indian_headquarters.jpg",
+      features: ["Direct access from 6-lane National Highway-8", "Adjacent to Kishangarh Airport", "Ideal for hotels, showrooms & luxury villas"]
     }
   ];
 
-  // Auto slide featured townships every 5.5 seconds unless paused
   useEffect(() => {
     if (!isAutoPlay) return;
     const interval = setInterval(() => {
@@ -209,7 +332,7 @@ export default function Home() {
   };
 
   return (
-    <div className="pageContainer">
+    <div className="pageContainer mbThemePage">
       {/* FLOATING QUICK CONTACT PILL */}
       <div className="floatingContactPill">
         <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20JDA/RERA%20approved%20plots." target="_blank" rel="noopener noreferrer" className="floatWaBtn">
@@ -222,367 +345,353 @@ export default function Home() {
         </a>
       </div>
 
-      {/* HERO SECTION */}
-      <section className="hero">
-        <div className="heroGlowSphere heroGlowSphere1"></div>
-        <div className="heroGlowSphere heroGlowSphere2"></div>
-        <div className="heroGridPattern"></div>
-        <div className="heroOverlay"></div>
+      {/* MAGICBRICKS STYLE HERO SEARCH BANNER */}
+      <section className="mbHeroBanner">
+        <div className="mbHeroBackdrop">
+          <div className="mbHeroOverlay"></div>
+        </div>
 
-        <div className="heroContainer">
-          {/* LEFT COLUMN: Authority & Headings */}
-          <div className="heroContent">
-            {/* Trust & Authority Pill */}
-            <div className="heroPreBadge">
-              <span className="livePulseDot"></span>
-              <span className="heroPreBadgeText">RAJASTHAN & MAHARASHTRA'S PREMIER LAND ADVISORY</span>
+        <div className="mbHeroContainer">
+          <div className="mbHeroHeader">
+            <div className="mbAuthorityTag">
+              <span className="mbLiveDot"></span>
+              <span>Premier Land Portal • 100% Clear Marketable Title</span>
             </div>
-
-            {/* Expert Verification Badge */}
-            <div className="heroExpertBadge">
-              <div className="expertAvatarWrapper">
-                <img src="/emblem.png" alt="Raju Verma Emblem" className="expertAvatarEmblem" />
-                <span className="verifiedStar">✓</span>
-              </div>
-              <div className="expertInfoCol">
-                <div className="expertNameRow">
-                  <span className="expertName">RAJU VERMA</span>
-                  <span className="expertRating">★★★★★ 4.9/5 (480+ Investors)</span>
-                </div>
-                <span className="expertAffil">Chief Real Estate Advisor • Gokul Kripa Sales & Marketing</span>
-              </div>
-            </div>
-
-            {/* Hero Master Title */}
-            <h1 className="heroMasterTitle">
-              Where <span className="goldGradientText">Legacy</span> Takes Shape.
+            <h1 className="mbHeroTitle">
+              Where Trust Builds <span className="mbGoldSpan">Lasting Value</span>
               <br />
-              <span className="heroMasterSubTitle">Where Vision Becomes High Value.</span>
+              <span className="mbHeroSubTitle">100% JDA & RERA Approved Plots & Master Townships</span>
             </h1>
-
-            <p className="heroMottoTagline">
-              PLOT WITH PROPERTY — Secure Your Future With Prime JDA & RERA Approved Land.
+            <p className="mbHeroTagline">
+              500+ verified freehold plots across Jaipur, Navi Mumbai, Bhiwadi, Ajmer & Kishangarh — immediate registry, statutory government patta, and on-ground pillar demarcation.
             </p>
-
-            <p className="heroText">
-              Discover 100% government approved, clear-title freehold township plots across <strong>Jaipur, Navi Mumbai, Bhiwadi, Ajmer, and Kishangarh</strong> with immediate registry, physical on-ground demarcation, and verified double-digit annual appreciation.
-            </p>
-
-            {/* Interactive Location Selector Chips */}
-            <div className="heroCitySelector">
-              <div className="citySelectHeader">
-                <span className="citySelectLabel">EXPLORE GROWTH CORRIDOR:</span>
-                <span className="citySwipeHint">Tap or swipe cards ⇄</span>
-              </div>
-              <div className="cityPillGroup">
-                {heroTownships.map((t, idx) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    className={`cityPill ${selectedTownshipIndex === idx ? "active" : ""}`}
-                    onClick={() => setSelectedTownshipIndex(idx)}
-                  >
-                    📍 {t.city}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Hero CTA Buttons */}
-            <div className="heroButtons">
-              <Link to={`/properties?loc=${heroTownships[selectedTownshipIndex].city}`} className="goldBtn heroPrimaryBtn">
-                <span>Explore {heroTownships[selectedTownshipIndex].city} Townships</span>
-                <span className="btnArrow">→</span>
-              </Link>
-
-              <Link to="/contact" className="outlineBtn heroSecondaryBtn">
-                <span>📅 Schedule Site Visit</span>
-              </Link>
-
-              <a 
-                href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20${encodeURIComponent(heroTownships[selectedTownshipIndex].title)}%20in%20${heroTownships[selectedTownshipIndex].city}.`}
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="heroWaQuickBtn"
-                title="Direct WhatsApp Consultation"
-              >
-                <span className="heroWaIcon">💬</span>
-                <span className="heroWaText">Chat on WhatsApp</span>
-              </a>
-            </div>
-
-            {/* Key Guarantees Grid */}
-            <div className="heroCertBadges">
-              <div className="certItem">
-                <span className="certIcon">🏛️</span>
-                <div>
-                  <strong>100% JDA & RERA Approved</strong>
-                  <p>Full Government Legal Clearance</p>
-                </div>
-              </div>
-              <div className="certItem">
-                <span className="certIcon">📜</span>
-                <div>
-                  <strong>Instant Registry & Patta</strong>
-                  <p>Immediate 100% Title Transfer</p>
-                </div>
-              </div>
-              <div className="certItem">
-                <span className="certIcon">📐</span>
-                <div>
-                  <strong>On-Ground Demarcation</strong>
-                  <p>Boundary Pillars & Sector Roads</p>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* RIGHT COLUMN: Interactive Luxury Showcase Deck */}
-          <div 
-            className="heroVisualDeck"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div 
-              className="townshipShowcaseCard"
-              onMouseEnter={() => setIsAutoPlay(false)}
-              onMouseLeave={() => setIsAutoPlay(true)}
-            >
-              {/* Card Image with overlay */}
-              <div className="townshipImgContainer">
-                <img 
-                  src={heroTownships[selectedTownshipIndex].image} 
-                  alt={heroTownships[selectedTownshipIndex].title}
-                  className="townshipImg"
-                  key={heroTownships[selectedTownshipIndex].id}
-                />
-                <div className="townshipImgOverlay"></div>
-                
-                {/* Carousel Nav Controls */}
-                <button 
-                  className="cardNavBtn cardNavPrev" 
-                  onClick={prevTownship}
+          {/* MAGICBRICKS SIGNATURE MULTI-TAB SEARCH BOX */}
+          <div className="mbSearchWrapper">
+            <div className="mbSearchTabs">
+              {[
+                { key: "Plot", label: "🏡 Residential Plots" },
+                { key: "Commercial", label: "🏢 Commercial Land" },
+                { key: "Residential", label: "🏛️ Gated Townships" },
+                { key: "Luxury", label: "⭐ High Growth Projects" }
+              ].map((tab) => (
+                <button
+                  key={tab.key}
                   type="button"
-                  aria-label="Previous township"
+                  className={`mbSearchTab ${activeTab === tab.key ? "active" : ""}`}
+                  onClick={() => setActiveTab(tab.key)}
                 >
-                  ‹
+                  {tab.label}
                 </button>
-                <button 
-                  className="cardNavBtn cardNavNext" 
-                  onClick={nextTownship}
-                  type="button"
-                  aria-label="Next township"
-                >
-                  ›
-                </button>
+              ))}
+            </div>
 
-                {/* Top Floating Badge */}
-                <div className="townshipTopBadge">
-                  <span className="badgeFire">{heroTownships[selectedTownshipIndex].tag}</span>
-                  <span className="badgeGrowth">{heroTownships[selectedTownshipIndex].growth}</span>
-                </div>
-
-                {/* Bottom Floating Value Pill */}
-                <div className="townshipPricePill">
-                  <span className="priceLabel">STARTING FROM</span>
-                  <span className="priceValue">{heroTownships[selectedTownshipIndex].price}</span>
-                  <span className="priceUnit">{heroTownships[selectedTownshipIndex].priceUnit}</span>
-                </div>
-
-                {/* Dot Indicators on Image */}
-                <div className="townshipDots">
-                  {heroTownships.map((_, dotIdx) => (
-                    <button
-                      key={dotIdx}
-                      type="button"
-                      className={`townshipDot ${selectedTownshipIndex === dotIdx ? "active" : ""}`}
-                      onClick={() => setSelectedTownshipIndex(dotIdx)}
-                      aria-label={`View township ${dotIdx + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="townshipCardBody">
-                <div className="townshipMetaRow">
-                  <span className="townshipGovTag">🛡️ {heroTownships[selectedTownshipIndex].badge}</span>
-                  <span className="townshipCityTag">📍 {heroTownships[selectedTownshipIndex].city}</span>
-                </div>
-
-                <h3 className="townshipTitle">{heroTownships[selectedTownshipIndex].title}</h3>
-                <p className="townshipCorridor">🛣️ {heroTownships[selectedTownshipIndex].corridor}</p>
-
-                <div className="townshipFeaturesList">
-                  {heroTownships[selectedTownshipIndex].features.map((feat, fIdx) => (
-                    <span key={fIdx} className="townshipFeatChip">
-                      ✓ {feat}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Quick Action in Card */}
-                <div className="townshipCardFooter">
-                  <Link 
-                    to={`/properties?loc=${heroTownships[selectedTownshipIndex].city}`}
-                    className="viewTownshipBtn"
+            <form className="mbSearchForm" onSubmit={handleSearch}>
+              {/* City Selector */}
+              <div className="mbSearchField mbCityField">
+                <span className="mbFieldIcon">📍</span>
+                <div className="mbFieldInner">
+                  <label>City / Region</label>
+                  <select
+                    value={filters.location}
+                    onChange={(e) => setFilters({ ...filters, location: e.target.value })}
                   >
-                    Explore Plots & Layout Plans →
-                  </Link>
-                  <div className="liveAvailabilityBadge">
-                    <span className="liveGreenDot"></span>
-                    <span>Free Cab Site Visit Available</span>
-                  </div>
+                    <option value="All">All 5 Cities (Any Location)</option>
+                    <option value="Jaipur">Jaipur (Ajmer Road, Ring Road, Jagatpura)</option>
+                    <option value="Navi Mumbai">Navi Mumbai (Panvel, Airport Zone)</option>
+                    <option value="Bhiwadi">Bhiwadi (Alwar Highway, RIICO Hub)</option>
+                    <option value="Ajmer">Ajmer (Expressway, Pushkar Bypass)</option>
+                    <option value="Kishangarh">Kishangarh (NH-8 Highway)</option>
+                  </select>
                 </div>
               </div>
 
-              {/* Floating Mini Highlight Bubble */}
-              <div className="floatingConsultantCard">
-                <div className="consultantAvatar">
-                  <img src="/emblem.png" alt="Raju Verma Emblem" />
+              {/* Keyword / Locality Search */}
+              <div className="mbSearchField mbLocalityField">
+                <span className="mbFieldIcon">🔍</span>
+                <div className="mbFieldInner">
+                  <label>Locality / Landmark</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Ajmer Road, Ring Road, Airport Corridor, NH-8..."
+                    value={filters.searchQuery}
+                    onChange={(e) => setFilters({ ...filters, searchQuery: e.target.value })}
+                  />
                 </div>
-                <div className="consultantText">
-                  <div className="consultantStatus">
-                    <span className="liveGreenDot"></span>
-                    <strong>Raju Verma</strong> (Direct Advisory)
-                  </div>
-                  <p>100% Freehold • Zero Brokerage</p>
+              </div>
+
+              {/* Budget Range */}
+              <div className="mbSearchField mbBudgetField">
+                <span className="mbFieldIcon">💰</span>
+                <div className="mbFieldInner">
+                  <label>Budget Range</label>
+                  <select
+                    value={filters.budget}
+                    onChange={(e) => setFilters({ ...filters, budget: e.target.value })}
+                  >
+                    <option value="All">Any Budget</option>
+                    <option value="10L-25L">₹10 Lakh – ₹25 Lakh</option>
+                    <option value="25L-50L">₹25 Lakh – ₹50 Lakh</option>
+                    <option value="50L+">₹50 Lakh & Above</option>
+                  </select>
                 </div>
+              </div>
+
+              {/* Submit Search Button */}
+              <button type="submit" className="mbSearchSubmitBtn">
+                <span className="mbSearchIcon">🔍</span>
+                <span>Search Plots</span>
+              </button>
+            </form>
+
+            {/* Quick Filter Chips */}
+            <div className="mbQuickChipsRow">
+              <span className="mbChipsLabel">Popular Searches:</span>
+              <div className="mbChipsList">
+                <Link to="/properties?loc=Jaipur" className="mbChipItem">🔥 Ajmer Road Jaipur</Link>
+                <Link to="/properties?loc=Navi%20Mumbai" className="mbChipItem">✈️ Navi Mumbai Airport Zone</Link>
+                <Link to="/properties?type=Plot&budget=10L-25L" className="mbChipItem">⚡ Plots Under ₹25 Lakh</Link>
+                <Link to="/properties?loc=Bhiwadi" className="mbChipItem">🏭 Bhiwadi RIICO Corridor</Link>
+                <Link to="/properties?loc=Kishangarh" className="mbChipItem">💎 Kishangarh NH-8 Highway</Link>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* FULL WIDTH LUXURY STATS RIBBON */}
-        <div className="heroStatsRibbon">
-          <div className="statRibbonItem">
-            <span className="statRibbonIcon">💎</span>
-            <div className="statRibbonText">
+      {/* STATS STRIP (MAGICBRICKS TRUST NUMBERS) */}
+      <section className="mbStatsStrip">
+        <div className="mbStatsContainer">
+          <div className="mbStatItem">
+            <span className="mbStatIcon">💎</span>
+            <div>
               <h3>500+</h3>
               <p>Verified Plots Available</p>
             </div>
           </div>
-          <div className="statRibbonDivider"></div>
-          <div className="statRibbonItem">
-            <span className="statRibbonIcon">📍</span>
-            <div className="statRibbonText">
-              <h3>5 Cities</h3>
+          <div className="mbStatDivider"></div>
+          <div className="mbStatItem">
+            <span className="mbStatIcon">📍</span>
+            <div>
+              <h3>5 Prime Cities</h3>
               <p>Jaipur • Mumbai • Bhiwadi • Ajmer</p>
             </div>
           </div>
-          <div className="statRibbonDivider"></div>
-          <div className="statRibbonItem">
-            <span className="statRibbonIcon">🏛️</span>
-            <div className="statRibbonText">
+          <div className="mbStatDivider"></div>
+          <div className="mbStatItem">
+            <span className="mbStatIcon">🏛️</span>
+            <div>
               <h3>₹250Cr+</h3>
-              <p>Land Assets Facilitated</p>
+              <p>Successful Deliveries</p>
             </div>
           </div>
-          <div className="statRibbonDivider"></div>
-          <div className="statRibbonItem">
-            <span className="statRibbonIcon">⭐</span>
-            <div className="statRibbonText">
-              <h3>99.4%</h3>
-              <p>Investor Trust Score</p>
+          <div className="mbStatDivider"></div>
+          <div className="mbStatItem">
+            <span className="mbStatIcon">⭐</span>
+            <div>
+              <h3>4.9 / 5.0</h3>
+              <p>Google 5-Star Rated</p>
             </div>
           </div>
-          <div className="statRibbonDivider"></div>
-          <div className="statRibbonItem">
-            <span className="statRibbonIcon">🛡️</span>
-            <div className="statRibbonText">
-              <h3>100%</h3>
+          <div className="mbStatDivider"></div>
+          <div className="mbStatItem">
+            <span className="mbStatIcon">🛡️</span>
+            <div>
+              <h3>100% Legal</h3>
               <p>JDA & RERA Approved</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ADVANCED SEARCH FILTER BOX */}
-      <section className="searchSection">
-        <div className="searchBox">
-          <div className="searchFilterTabs">
-            {["Plot", "Commercial", "Residential", "Luxury"].map((tab) => (
-              <button
-                key={tab}
-                type="button"
-                className={`filterTabBtn ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab === "Plot" ? "🏡 Buy Plots / Land" : tab === "Commercial" ? "🏢 Commercial Space" : tab === "Residential" ? "🏛️ Luxury Villas" : "⭐ High ROI Projects"}
-              </button>
-            ))}
+      {/* FEATURED TOWNSHIPS SHOWCASE */}
+      <section className="mbShowcaseSection">
+        <div className="mbSectionHeader">
+          <div className="mbSectionHeaderLeft">
+            <span className="mbSectionTag">Premium Master Townships</span>
+            <h2 className="mbSectionTitle">High-Growth <span>Township Projects</span></h2>
+            <p className="mbSectionDesc">Wide sector roads, statutory JDA Patta, landscaped parks, and immediate registry.</p>
+          </div>
+          <div className="mbShowcaseNavControls">
+            <button onClick={prevTownship} className="mbRoundNavBtn" aria-label="Previous">‹</button>
+            <button onClick={nextTownship} className="mbRoundNavBtn" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        {/* Township Interactive Deck */}
+        <div 
+          className="mbShowcaseCard"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onMouseEnter={() => setIsAutoPlay(false)}
+          onMouseLeave={() => setIsAutoPlay(true)}
+        >
+          <div className="mbShowcaseImgWrap">
+            <img 
+              src={heroTownships[selectedTownshipIndex].image} 
+              alt={heroTownships[selectedTownshipIndex].title} 
+              className="mbShowcaseImg"
+            />
+            <div className="mbShowcaseImgOverlay"></div>
+            
+            <div className="mbShowcaseBadges">
+              <span className="mbTagPill mbTagHot">{heroTownships[selectedTownshipIndex].tag}</span>
+              <span className="mbTagPill mbTagGrowth">{heroTownships[selectedTownshipIndex].growth}</span>
+            </div>
+
+            <div className="mbShowcasePriceBox">
+              <span className="mbPriceSub">Starting Price</span>
+              <div className="mbPriceMain">
+                <span className="mbPriceNum">{heroTownships[selectedTownshipIndex].price}</span>
+                <span className="mbPriceUnit">{heroTownships[selectedTownshipIndex].priceUnit}</span>
+              </div>
+              <span className="mbEmiNote">{heroTownships[selectedTownshipIndex].emi}</span>
+            </div>
           </div>
 
-          <form className="searchGridForm" onSubmit={handleSearch}>
-            <div className="filterField">
-              <label>Target Location</label>
-              <select
-                value={filters.location}
-                onChange={(e) => setFilters({ ...filters, location: e.target.value })}
+          <div className="mbShowcaseContent">
+            <div className="mbTownshipMeta">
+              <span className="mbMetaGov">🛡️ {heroTownships[selectedTownshipIndex].badge}</span>
+              <span className="mbMetaCity">📍 {heroTownships[selectedTownshipIndex].city}</span>
+            </div>
+
+            <h3 className="mbTownshipName">{heroTownships[selectedTownshipIndex].title}</h3>
+            <p className="mbTownshipCorridor">🛣️ {heroTownships[selectedTownshipIndex].corridor}</p>
+
+            <div className="mbFeaturesGrid">
+              {heroTownships[selectedTownshipIndex].features.map((feat, idx) => (
+                <div key={idx} className="mbFeatItem">
+                  <span className="mbFeatCheck">✓</span>
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mbExpertConsultBox">
+              <div className="mbExpertLeft">
+                <img src="/emblem.png" alt="Raju Verma" className="mbExpertMiniEmblem" />
+                <div>
+                  <strong>Raju Verma (Direct Developer Advisory)</strong>
+                  <p>Gokul Kripa • 0% Brokerage</p>
+                </div>
+              </div>
+              <div className="mbFreeVisitPill">
+                <span className="mbLiveGreen"></span>
+                <span>Free AC Cab Site Visit</span>
+              </div>
+            </div>
+
+            <div className="mbShowcaseActions">
+              <Link 
+                to={`/properties?loc=${encodeURIComponent(heroTownships[selectedTownshipIndex].city)}`}
+                className="mbPrimaryGoldBtn"
               >
-                <option value="All">All Cities (Jaipur, Navi Mumbai, Bhiwadi, Ajmer, Kishangarh)</option>
-                <option value="Jaipur">Jaipur (Ajmer Rd, Jagatpura, Ring Rd)</option>
-                <option value="Navi Mumbai">Navi Mumbai (Panvel, Airport Corridor)</option>
-                <option value="Bhiwadi">Bhiwadi (NCR Industrial Belt)</option>
-                <option value="Ajmer">Ajmer (Expressway, Pushkar Bypass)</option>
-                <option value="Kishangarh">Kishangarh (Marble City Highway)</option>
-              </select>
-            </div>
-
-            <div className="filterField">
-              <label>Budget Allocation</label>
-              <select
-                value={filters.budget}
-                onChange={(e) => setFilters({ ...filters, budget: e.target.value })}
+                View Township Layout & Plots →
+              </Link>
+              <Link 
+                to={`/contact?property=${encodeURIComponent(heroTownships[selectedTownshipIndex].title)}`}
+                className="mbOutlineBtn"
               >
-                <option value="All">Any Budget Range</option>
-                <option value="10L-25L">₹10 Lakh – ₹25 Lakh</option>
-                <option value="25L-50L">₹25 Lakh – ₹50 Lakh</option>
-                <option value="50L+">₹50 Lakh & Above</option>
-              </select>
+                📅 Book Site Visit
+              </Link>
+              <a
+                href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20${encodeURIComponent(heroTownships[selectedTownshipIndex].title)}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mbWaBtn"
+                title="WhatsApp Advisory"
+              >
+                💬 WhatsApp
+              </a>
             </div>
 
-            <div className="filterField">
-              <label>Legal Status</label>
-              <select defaultValue="RERA/JDA Approved">
-                <option>✅ JDA Approved & RERA Registered</option>
-                <option>Clear Title Freehold Patta</option>
-                <option>Instant Registry & Demarcation</option>
-              </select>
+            {/* Township Switcher Pills */}
+            <div className="mbTownshipTabsRow">
+              {heroTownships.map((t, idx) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  className={`mbTownshipTabBtn ${selectedTownshipIndex === idx ? "active" : ""}`}
+                  onClick={() => setSelectedTownshipIndex(idx)}
+                >
+                  📍 {t.city}: {t.title.split(" ")[0]}
+                </button>
+              ))}
             </div>
-
-            <button type="submit" className="searchBtn">
-              🔍 Find Properties
-            </button>
-          </form>
+          </div>
         </div>
       </section>
 
-      {/* PRIME GROWTH CORRIDORS / LOCATIONS */}
-      <section className="corridorsSection">
-        <div className="sectionHeading">
-          <p>HIGH-APPRECIATION ZONES</p>
-          <h2>Prime Growth <span>Corridors</span></h2>
-          <p className="sectionSubDesc">
-            Strategically curated locations delivering consistent double-digit capital appreciation and exceptional rental potential.
-          </p>
-          <div className="goldLine"></div>
+      {/* SECTION: TOWNSHIP INFRASTRUCTURE & WORLD-CLASS AMENITIES */}
+      <section className="mbAmenitiesSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Master-Planned Living</span>
+          <h2 className="mbSectionTitle">World-Class Infrastructure <span>& Amenities</span></h2>
+          <p className="mbSectionDesc">Every plotted township is developed to statutory government master plan benchmarks.</p>
         </div>
 
-        <div className="corridorGrid">
+        <div className="mbAmenitiesGrid">
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">🛣️</div>
+            <h3>60ft to 100ft Sector Roads</h3>
+            <p>Heavy-duty asphalt wide roads with paver-block pedestrian pathways and tree-lined avenues.</p>
+          </div>
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">⚡</div>
+            <h3>Underground Electricity & Water</h3>
+            <p>Modern concealed cabling, dual water supply network, and rainwater harvesting structures.</p>
+          </div>
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">🌳</div>
+            <h3>Landscaped Parks & Gazebos</h3>
+            <p>Dedicated lush green recreational parks, children's play zones, and senior citizen sit-outs.</p>
+          </div>
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">🛡️</div>
+            <h3>Gated Security & CCTV Surveillance</h3>
+            <p>Grand designer entrance gate, 24/7 security personnel, and full boundary wall perimeter.</p>
+          </div>
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">🛕</div>
+            <h3>Community Temple & Meditation Area</h3>
+            <p>Sacred temple enclave built inside the township for peace, harmony, and spiritual well-being.</p>
+          </div>
+          <div className="mbAmenityCard">
+            <div className="mbAmenityIcon">📐</div>
+            <h3>Concrete Demarcation Pillars</h3>
+            <p>Pre-cast concrete boundary pillars on all 4 corners of every plot with verified GPS coordinates.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* POPULAR REAL ESTATE HUBS / GROWTH CORRIDORS */}
+      <section className="mbCorridorsSection">
+        <div className="mbSectionHeader">
+          <div className="mbSectionHeaderLeft">
+            <span className="mbSectionTag">High Growth Corridors</span>
+            <h2 className="mbSectionTitle">Prime Investment <span>Corridors</span></h2>
+            <p className="mbSectionDesc">Strategic highway and airport hubs offering 15% to 22% annual capital growth.</p>
+          </div>
+          <Link to="/properties" className="mbHeaderLink">View All Locations →</Link>
+        </div>
+
+        <div className="mbCorridorGrid">
           {primeLocations.map((loc, idx) => (
-            <div className="corridorCard" key={idx}>
-              <div className="corridorImgBox">
+            <div className="mbCorridorCard" key={idx}>
+              <div className="mbCorridorImgBox">
                 <img src={loc.image} alt={loc.name} />
-                <span className="corridorTag">{loc.tag}</span>
-                <span className="growthBadge">{loc.growth}</span>
+                <span className="mbCorridorTag">{loc.tag}</span>
+                <span className="mbCorridorGrowth">{loc.growth}</span>
+                <div className="mbCorridorPlotsCount">{loc.plotsCount}</div>
               </div>
-              <div className="corridorContent">
-                <p className="corridorCity">📍 {loc.city}</p>
-                <h3>{loc.name}</h3>
-                <p className="corridorDesc">{loc.desc}</p>
-                <Link to={`/properties?loc=${loc.city}`} className="exploreCorridorLink">
-                  View Available Plots in {loc.name.split(" ")[0]} →
+              <div className="mbCorridorBody">
+                <span className="mbCorridorCity">📍 {loc.city}</span>
+                <h3 className="mbCorridorName">{loc.name}</h3>
+                <p className="mbCorridorDesc">{loc.desc}</p>
+                <Link to={`/properties?loc=${encodeURIComponent(loc.city)}`} className="mbCorridorExploreBtn">
+                  <span>Explore Available Plots</span>
+                  <span>→</span>
                 </Link>
               </div>
             </div>
@@ -590,257 +699,345 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PROPERTIES PREVIEW */}
-      <section className="properties">
-        <div className="sectionHeading">
-          <p>HANDPICKED INVENTORY</p>
-          <h2>Featured <span>Properties</span></h2>
-          <p className="sectionSubDesc">
-            Explore premium verified plots and commercial hubs with guaranteed legal clarity and immediate possession.
-          </p>
-          <div className="goldLine"></div>
+      {/* MAGICBRICKS STYLE REAL ESTATE SERVICES */}
+      <section className="mbServicesStripSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">End-to-End Solutions</span>
+          <h2 className="mbSectionTitle">Property Services <span>(Plot With Property)</span></h2>
+          <p className="mbSectionDesc">From statutory legal title search and bank loans to physical boundary demarcation.</p>
         </div>
 
-        <div className="propertyGrid">
-          <div className="propertyCard">
-            <div className="propertyImage">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                alt="Royal Enclave Gated Plot"
-              />
-              <span className="tag">FEATURED</span>
-              <span className="propertyTypeBadge">Residential Plot</span>
-            </div>
-
-            <div className="propertyInfo">
-              <p className="location">📍 Ajmer Road, Jaipur</p>
-              <h3>Royal Enclave Gated Plot</h3>
-              <p className="cardShortDesc">Luxury gated community plot with wide asphalt roads, underground electrification, and clubhouse access.</p>
-              
-              <div className="featuresPills">
-                <span className="featPill">✓ JDA Approved</span>
-                <span className="featPill">✓ 60ft Main Road</span>
-                <span className="featPill">✓ Bank Loan OK</span>
-              </div>
-
-              <div className="propertyDetails">
-                <span>📏 2500 Sq.Ft (277 Sq.Yd)</span>
-                <span>🏛️ Gated Enclave</span>
-              </div>
-
-              <div className="cardBottom">
-                <div>
-                  <span className="priceLabel">Starting Price</span>
-                  <strong>₹45 Lac</strong>
-                </div>
-                <Link to="/contact?property=Royal%20Enclave%20Gated%20Plot" className="viewCardBtn">
-                  Book Site Visit →
-                </Link>
-              </div>
-            </div>
+        <div className="mbServicesGrid">
+          <div className="mbServiceCard">
+            <div className="mbServiceIconWrap">🚗</div>
+            <h3>Free AC Cab Site Visit</h3>
+            <p>Doorstep family pickup and guided on-ground site inspection with zero charges.</p>
+            <Link to="/contact" className="mbServiceLink">Book Free Ride →</Link>
           </div>
 
-          <div className="propertyCard">
-            <div className="propertyImage">
-              <img
-                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
-                alt="Grand Horizon Commercial Complex"
-              />
-              <span className="tag">PREMIUM</span>
-              <span className="propertyTypeBadge">Commercial Land</span>
-            </div>
-
-            <div className="propertyInfo">
-              <p className="location">📍 Tonk Road, Jaipur</p>
-              <h3>Grand Horizon Commercial Complex</h3>
-              <p className="cardShortDesc">High-visibility corner commercial plot along major 100ft arterial road. High footfall and immense corporate demand.</p>
-
-              <div className="featuresPills">
-                <span className="featPill">✓ Commercial Belt</span>
-                <span className="featPill">✓ Corner Plot</span>
-                <span className="featPill">✓ 12% Assured ROI</span>
-              </div>
-
-              <div className="propertyDetails">
-                <span>📏 5000 Sq.Ft (555 Sq.Yd)</span>
-                <span>🏢 Commercial</span>
-              </div>
-
-              <div className="cardBottom">
-                <div>
-                  <span className="priceLabel">Starting Price</span>
-                  <strong>₹1.20 Cr</strong>
-                </div>
-                <Link to="/contact?property=Grand%20Horizon%20Commercial%20Complex" className="viewCardBtn">
-                  Book Site Visit →
-                </Link>
-              </div>
-            </div>
+          <div className="mbServiceCard">
+            <div className="mbServiceIconWrap">⚖️</div>
+            <h3>30-Year Legal Due Diligence</h3>
+            <p>100% audit of Mother Deed, Revenue Chain, JDA Patta & Non-Encumbrance Certificate by High Court lawyers.</p>
+            <Link to="/services" className="mbServiceLink">Legal Advisory →</Link>
           </div>
 
-          <div className="propertyCard">
-            <div className="propertyImage">
-              <img
-                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
-                alt="Emerald Green Township Plot"
-              />
-              <span className="tag">NEW LAUNCH</span>
-              <span className="propertyTypeBadge">Residential Plot</span>
-            </div>
-
-            <div className="propertyInfo">
-              <p className="location">📍 Jagatpura, Jaipur</p>
-              <h3>Emerald Green Township</h3>
-              <p className="cardShortDesc">Serene park-facing plot situated in a master-planned township near premier international schools and hospital.</p>
-
-              <div className="featuresPills">
-                <span className="featPill">✓ Near Ring Road</span>
-                <span className="featPill">✓ Park Facing</span>
-                <span className="featPill">✓ Immediate Registry</span>
-              </div>
-
-              <div className="propertyDetails">
-                <span>📏 1800 Sq.Ft (200 Sq.Yd)</span>
-                <span>🏡 Residential</span>
-              </div>
-
-              <div className="cardBottom">
-                <div>
-                  <span className="priceLabel">Starting Price</span>
-                  <strong>₹32 Lac</strong>
-                </div>
-                <Link to="/contact?property=Emerald%20Green%20Township" className="viewCardBtn">
-                  Book Site Visit →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <Link to="/properties" className="viewAll">
-          Explore All 500+ Verified Properties →
-        </Link>
-      </section>
-
-      {/* WHY INVEST WITH US / ADVANTAGES */}
-      <section className="advantagesSection">
-        <div className="sectionHeading">
-          <p>THE PLOT WITH PROPERTY DIFFERENCE</p>
-          <h2>Why Elite Investors <span>Trust Us</span></h2>
-          <div className="goldLine"></div>
-        </div>
-
-        <div className="advantagesGrid">
-          <div className="advantageCard">
-            <div className="advIcon">⚖️</div>
-            <h3>100% Legal Due Diligence</h3>
-            <p>Every plot passes strict title search, encumbrance verification, and government zoning checks before listing.</p>
+          <div className="mbServiceCard">
+            <div className="mbServiceIconWrap">🏦</div>
+            <h3>Up to 80% Bank Loan Support</h3>
+            <p>Instant home loan sanctions from SBI, HDFC, ICICI, and Axis Bank with minimal paperwork.</p>
+            <Link to="/services" className="mbServiceLink">Check Loan Eligibility →</Link>
           </div>
 
-          <div className="advantageCard">
-            <div className="advIcon">📍</div>
-            <h3>On-Ground Demarcation</h3>
-            <p>Clear physical boundary pillars and instant GPS coordinate possession with official registry support.</p>
-          </div>
-
-          <div className="advantageCard">
-            <div className="advIcon">📈</div>
-            <h3>High-Appreciation Corridors</h3>
-            <p>We exclusively shortlist lands along upcoming expressways, metro lines, and industrial SEZs for 15-20% YoY growth.</p>
-          </div>
-
-          <div className="advantageCard">
-            <div className="advIcon">🤝</div>
-            <h3>Zero Hidden Commissions</h3>
-            <p>Transparent government fee computation, clear developer pricing, and dedicated legal assistance throughout.</p>
+          <div className="mbServiceCard">
+            <div className="mbServiceIconWrap">📐</div>
+            <h3>Pillar Demarcation & Registry</h3>
+            <p>Reinforced concrete boundary pillars, GPS coordinates, spot registration and instant Mutation (Dakhil Kharij).</p>
+            <Link to="/services" className="mbServiceLink">Registry Process →</Link>
           </div>
         </div>
       </section>
 
-      {/* ABOUT PREVIEW */}
-      <section className="about">
-        <div className="aboutImage">
-          <img
-            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1000&q=80"
-            alt="Plot With Property Headquarters"
-          />
-          <div className="experienceBox">
-            <strong>10+</strong>
-            <span>Years of Excellence</span>
+      {/* HANDPICKED FEATURED PROPERTIES LISTINGS (EXPANDED TO 6 WITH CITY TABS) */}
+      <section className="mbPropertiesSection">
+        <div className="mbSectionHeader">
+          <div className="mbSectionHeaderLeft">
+            <span className="mbSectionTag">Verified Inventory</span>
+            <h2 className="mbSectionTitle">Featured Plots <span>For Sale</span></h2>
+            <p className="mbSectionDesc">100% clear title, statutory JDA Patta, and ready-to-build residential and commercial land parcels.</p>
           </div>
+          <Link to="/properties" className="mbHeaderLink">Explore All 500+ Plots →</Link>
         </div>
 
-        <div className="aboutContent">
-          <p className="goldText">ABOUT PLOT WITH PROPERTY</p>
-          <h2>
-            Building Trust.
-            <br />
-            <span>Creating Legacies.</span>
-          </h2>
-          <p>
-            At <strong>Plot With Property</strong>, we empower individuals, businesses, and NRI investors to acquire high-value land assets with complete confidence and transparency.
-          </p>
-          <p>
-            From identifying untapped growth corridors to handling paperwork, registration, and mutation, our concierge advisory team provides end-to-end support at every step.
-          </p>
+        {/* City Filter Tabs for Property Grid */}
+        <div className="mbHomePropFilterTabs">
+          {["All", "Jaipur", "Navi Mumbai", "Bhiwadi", "Kishangarh & Ajmer"].map((city) => (
+            <button
+              key={city}
+              type="button"
+              className={`mbPropCityTabBtn ${selectedCityFilter === city ? "active" : ""}`}
+              onClick={() => setSelectedCityFilter(city)}
+            >
+              {city === "All" ? "📍 All Locations (6)" : `📍 ${city}`}
+            </button>
+          ))}
+        </div>
 
-          <div className="aboutHighlightsRow">
-            <div className="aboutHighlight">
-              <strong>500+</strong>
-              <span>Verified Plots</span>
-            </div>
-            <div className="aboutHighlight">
-              <strong>100%</strong>
-              <span>Clear Titles</span>
-            </div>
-            <div className="aboutHighlight">
-              <strong>₹250Cr+</strong>
-              <span>Facilitated</span>
-            </div>
-          </div>
+        <div className="mbPropertyCardsGrid">
+          {filteredHomeProperties.map((prop) => (
+            <div className="mbPropertyCard" key={prop.id}>
+              <div className="mbPropImgBox">
+                <img src={prop.image} alt={prop.title} />
+                <span className="mbPropVerified">✓ JDA / RERA</span>
+                <span className="mbPropTypeBadge">{prop.tag}</span>
+                <span className="mbPropPriceTag">{prop.price}</span>
+              </div>
 
-          <Link to="/about" className="goldBtn inlineBtn">
-            Know More About Us →
+              <div className="mbPropBody">
+                <div className="mbPropPriceRow">
+                  <div className="mbPropPriceMain">
+                    <strong>{prop.price}</strong>
+                  </div>
+                </div>
+
+                <h3 className="mbPropTitle">{prop.title}</h3>
+                <p className="mbPropLocation">📍 {prop.location}</p>
+
+                <div className="mbPropPills">
+                  {prop.pills.map((pill, pIdx) => (
+                    <span key={pIdx} className="mbPropPill">{pill}</span>
+                  ))}
+                </div>
+
+                <div className="mbPropSellerRow">
+                  <div className="mbSellerInfo">
+                    <span className="mbSellerBadge">Direct Developer Advisory</span>
+                    <span className="mbSellerName">Raju Verma • Gokul Kripa</span>
+                  </div>
+                  <span className="mbZeroBrok">0% Brokerage</span>
+                </div>
+
+                <div className="mbPropCardActions">
+                  <Link to={`/contact?property=${encodeURIComponent(prop.title)}`} className="mbPropBookBtn">
+                    🚗 Book Site Visit
+                  </Link>
+                  <a 
+                    href={`https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji,%20I%20am%20interested%20in%20${encodeURIComponent(prop.title)}.`}
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="mbPropWaBtn"
+                    title="WhatsApp Chat"
+                  >
+                    💬
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mbViewAllRow">
+          <Link to="/properties" className="mbViewAllBtn">
+            Explore All 500+ Verified Plots Across 5 Cities →
           </Link>
         </div>
       </section>
 
-      {/* CLIENT REVIEWS & TESTIMONIALS SECTION (HOME PAGE FOOTER REVIEWS) */}
-      <section className="reviewsSection" id="reviews">
-        <div className="sectionHeading">
-          <p>VOICE OF TRUST</p>
-          <h2>What Our <span>Clients Say</span></h2>
-          <p className="sectionSubDesc">
-            Rated <strong>4.9 / 5.0</strong> by 250+ satisfied property owners, NRIs, and institutional investors.
-          </p>
-          <div className="goldLine"></div>
+      {/* PLOTTED LAND VS APARTMENTS COMPARISON MATRIX */}
+      <section className="mbComparisonSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Investment Wisdom</span>
+          <h2 className="mbSectionTitle">Plotted Land <span>vs Flat / Apartment</span></h2>
+          <p className="mbSectionDesc">Why smart Indian families choose freehold land over high-rise apartments.</p>
         </div>
 
-        <div className="reviewsStatsBanner">
-          <div className="reviewOverallRating">
-            <span className="bigStarScore">4.9 ★★★★★</span>
-            <span className="ratingSubtext">Based on 250+ verified property transactions across Rajasthan & NCR</span>
-          </div>
-          <div className="googleBadge">
-            <span className="badgeIcon">G</span>
-            <span>Google 5-Star Certified Real Estate Advisory</span>
-          </div>
+        <div className="mbComparisonTableWrap">
+          <table className="mbComparisonTable">
+            <thead>
+              <tr>
+                <th>Key Parameter</th>
+                <th className="highlightCol">🏡 Freehold Plotted Land (PWP)</th>
+                <th>🏢 High-Rise Apartment / Flat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Land Ownership</strong></td>
+                <td className="highlightCol"><strong>100% Absolute Freehold Ownership</strong> with statutory patta and exclusive land rights.</td>
+                <td>Undivided Share of Land (UDS) shared among hundreds of owners.</td>
+              </tr>
+              <tr>
+                <td><strong>Annual Appreciation</strong></td>
+                <td className="highlightCol"><strong style={{ color: "#2E6B52" }}>15% to 22% Compounding Annual Growth</strong> in emerging expressway corridors.</td>
+                <td>6% to 8% nominal growth; building depreciates as structure ages.</td>
+              </tr>
+              <tr>
+                <td><strong>Recurring Maintenance</strong></td>
+                <td className="highlightCol"><strong>Zero / Nominal Maintenance</strong>. Zero recurring monthly drain on family budget.</td>
+                <td>High monthly maintenance charges (₹3,000 - ₹12,000/mo) lifelong.</td>
+              </tr>
+              <tr>
+                <td><strong>Construction Flexibility</strong></td>
+                <td className="highlightCol">Complete freedom to build a custom villa or multi-floor duplex on your own timeline.</td>
+                <td>Fixed floor plan; zero expansion possibility or structural customization.</td>
+              </tr>
+              <tr>
+                <td><strong>Possession & Registry</strong></td>
+                <td className="highlightCol"><strong>Instant Physical Possession</strong> with boundary pillars and same-day registry.</td>
+                <td>Frequent construction delays of 3 to 6 years with locked capital.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* 5-STEP LAND BUYING WORKFLOW */}
+      <section className="mbWorkflowSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Hassle-Free Process</span>
+          <h2 className="mbSectionTitle">Your 5-Step Journey <span>To Land Ownership</span></h2>
+          <p className="mbSectionDesc">Completely transparent, legally audited, and professionally guided at every stage.</p>
         </div>
 
-        <div className="reviewsGrid">
-          {clientReviews.map((rev) => (
-            <div className="reviewCard" key={rev.id}>
-              <div className="reviewStars">
-                {"★".repeat(rev.rating)}
-                <span className="verifiedTag">✓ Verified Buyer</span>
+        <div className="mbWorkflowGrid">
+          <div className="mbWorkflowStep">
+            <span className="mbStepNum">01</span>
+            <h3>Consultation</h3>
+            <p>Understand your budget, preferred city, and investment horizon with Raju Verma.</p>
+          </div>
+          <div className="mbWorkflowStep">
+            <span className="mbStepNum">02</span>
+            <h3>Layout Review</h3>
+            <p>Detailed review of 100% JDA/RERA township maps, sector roads, and satellite surveys.</p>
+          </div>
+          <div className="mbWorkflowStep">
+            <span className="mbStepNum">03</span>
+            <h3>Free AC Cab Visit</h3>
+            <p>Doorstep family pickup for a complete on-ground site inspection with zero charges.</p>
+          </div>
+          <div className="mbWorkflowStep">
+            <span className="mbStepNum">04</span>
+            <h3>Legal Title Audit</h3>
+            <p>Full 30-year mother deed, Khasra, and Non-Encumbrance Certificate verification.</p>
+          </div>
+          <div className="mbWorkflowStep">
+            <span className="mbStepNum">05</span>
+            <h3>Registry & Possession</h3>
+            <p>Concrete boundary pillars, spot registration, and fast-track mutation (Dakhil Kharij).</p>
+          </div>
+        </div>
+      </section>
+
+      {/* LEADERSHIP SPOTLIGHT ON HOME */}
+      <section className="mbLeaderSpotlightSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Expert Indian Leadership</span>
+          <h2 className="mbSectionTitle">Meet Our <span>Advisory Leaders</span></h2>
+          <p className="mbSectionDesc">Experienced professionals with over a decade of trusted land advisory across Rajasthan and NCR.</p>
+        </div>
+
+        <div className="mbLeaderGrid">
+          <div className="mbLeaderCard">
+            <img src={rajuVermaImg} alt="Raju Verma" className="mbLeaderImg" />
+            <div className="mbLeaderBody">
+              <h3>Raju Verma</h3>
+              <p className="mbLeaderRole">Chief Real Estate Advisor | Founder</p>
+              <p className="mbLeaderExp">Gokul Kripa • 10+ years shaping premier plotted townships.</p>
+              <div className="mbLeaderActions">
+                <a href="tel:+919876543210" className="mbLeaderPhoneBtn">📞 Call Direct</a>
+                <a href="https://wa.me/919876543210?text=Hello%20Raju%20Verma%20ji" target="_blank" rel="noopener noreferrer" className="mbLeaderWaBtn">💬 WhatsApp</a>
               </div>
-              <p className="reviewQuote">"{rev.review}"</p>
-              <div className="reviewerProfile">
-                <img src={rev.avatar} alt={rev.name} className="reviewerAvatar" />
+            </div>
+          </div>
+
+          <div className="mbLeaderCard">
+            <img src={rohitSharmaImg} alt="Rohit Sharma" className="mbLeaderImg" />
+            <div className="mbLeaderBody">
+              <h3>Rohit Sharma</h3>
+              <p className="mbLeaderRole">Head – Township & Land Acquisition</p>
+              <p className="mbLeaderExp">Master township planning & high-yield strategic land procurement.</p>
+              <div className="mbLeaderActions">
+                <Link to="/about" className="mbLeaderMoreBtn">View Profile →</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mbLeaderCard">
+            <img src={ananyaMehraImg} alt="Adv. Ananya Mehra" className="mbLeaderImg" />
+            <div className="mbLeaderBody">
+              <h3>Adv. Ananya Mehra</h3>
+              <p className="mbLeaderRole">Senior Legal & RERA Compliance Head</p>
+              <p className="mbLeaderExp">30-year mother deed scrutiny, title verification & mutation specialist.</p>
+              <div className="mbLeaderActions">
+                <Link to="/about" className="mbLeaderMoreBtn">View Profile →</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mbLeaderCard">
+            <img src={sureshChoudharyImg} alt="Suresh Choudhary" className="mbLeaderImg" />
+            <div className="mbLeaderBody">
+              <h3>Suresh Choudhary</h3>
+              <p className="mbLeaderRole">Director – Client Advisory & Operations</p>
+              <p className="mbLeaderExp">Complimentary family site visit logistics & on-ground pillar demarcation.</p>
+              <div className="mbLeaderActions">
+                <Link to="/about" className="mbLeaderMoreBtn">View Profile →</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY INVEST WITH US */}
+      <section className="mbTrustSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">The Symbol of Trust & Security</span>
+          <h2 className="mbSectionTitle">Why Smart Families & Investors <span>Choose Us?</span></h2>
+          <p className="mbSectionDesc">100% statutory government patta, transparent dealing, and instant on-ground possession.</p>
+        </div>
+
+        <div className="mbTrustGrid">
+          <div className="mbTrustCard">
+            <div className="mbTrustIcon">⚖️</div>
+            <h3>100% Legal Due Diligence</h3>
+            <p>Rigorous 30-year mother deed audit, revenue Khasra verification, and JDA/RERA zoning compliance before listing.</p>
+          </div>
+
+          <div className="mbTrustCard">
+            <div className="mbTrustIcon">📐</div>
+            <h3>On-Ground Boundary Demarcation</h3>
+            <p>Reinforced concrete corner pillars, precise GPS mapping, and guaranteed instant physical possession.</p>
+          </div>
+
+          <div className="mbTrustCard">
+            <div className="mbTrustIcon">📈</div>
+            <h3>High-Appreciation Corridors</h3>
+            <p>Handpicked prime land along expressways, ring roads, and SEZs offering 15% to 22% annual capital appreciation.</p>
+          </div>
+
+          <div className="mbTrustCard">
+            <div className="mbTrustIcon">🤝</div>
+            <h3>0% Brokerage • Direct Developer Price</h3>
+            <p>Zero hidden charges. Transparent pricing, complete government fee breakdown, and end-to-end legal support.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS SECTION */}
+      <section className="mbReviewsSection" id="reviews">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Client Trust & Testimonials</span>
+          <h2 className="mbSectionTitle">Voices of Our <span>Happy Families</span></h2>
+          <p className="mbSectionDesc">Rated <strong>4.9 / 5.0</strong> by 250+ satisfied plot buyers and families across Rajasthan and NCR.</p>
+        </div>
+
+        <div className="mbReviewsBanner">
+          <div className="mbReviewScoreCol">
+            <span className="mbBigStars">4.9 ★★★★★</span>
+            <span className="mbScoreSub">Verified across 250+ real estate registrations and handovers</span>
+          </div>
+          <div className="mbGoogleBadge">
+            <span className="mbGoogleIcon">G</span>
+            <span>Google 5-Star Verified Land Advisory</span>
+          </div>
+        </div>
+
+        <div className="mbReviewsGrid">
+          {clientReviews.map((rev) => (
+            <div className="mbReviewCard" key={rev.id}>
+              <div className="mbReviewHeader">
+                <div className="mbStarsRow">
+                  {"★".repeat(rev.rating)}
+                </div>
+                <span className="mbVerifiedBuyer">✓ Verified Buyer</span>
+              </div>
+              <p className="mbReviewText">"{rev.review}"</p>
+              <div className="mbReviewAuthor">
+                <img src={rev.avatar} alt={rev.name} className="mbAuthorAvatar" />
                 <div>
                   <h4>{rev.name}</h4>
-                  <p className="reviewerRole">{rev.role}</p>
-                  <p className="reviewerLoc">{rev.location}</p>
+                  <p className="mbAuthorRole">{rev.role}</p>
+                  <p className="mbAuthorLoc">📍 {rev.location}</p>
                 </div>
               </div>
             </div>
@@ -848,29 +1045,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REAL ESTATE INSIGHTS / NEWS */}
-      <section className="insightsSection">
-        <div className="sectionHeading">
-          <p>MARKET INTELLIGENCE</p>
-          <h2>Real Estate <span>Insights & Trends</span></h2>
-          <p className="sectionSubDesc">
-            Stay ahead with our latest land market research, zoning updates, and legal checklists.
-          </p>
-          <div className="goldLine"></div>
+      {/* HOME PAGE FAQS ACCORDION */}
+      <section className="mbFaqSection">
+        <div className="mbSectionHeader center">
+          <span className="mbSectionTag">Buyer Clarifications</span>
+          <h2 className="mbSectionTitle">Frequently Asked <span>Questions</span></h2>
+          <p className="mbSectionDesc">Clear answers to key questions every plot buyer should know.</p>
         </div>
 
-        <div className="insightsGrid">
-          {marketInsights.map((insight) => (
-            <div className="insightCard" key={insight.id}>
-              <div className="insightImage">
-                <img src={insight.image} alt={insight.title} />
-                <span className="insightDate">{insight.date} • {insight.readTime}</span>
+        <div className="mbFaqList">
+          {homeFaqs.map((faq, idx) => {
+            const isOpen = openFaqHome === idx;
+            return (
+              <div className={`mbFaqItem ${isOpen ? "open" : ""}`} key={idx}>
+                <button className="mbFaqQuestion" onClick={() => setOpenFaqHome(isOpen ? null : idx)}>
+                  <span>{faq.q}</span>
+                  <span className="mbFaqToggle">{isOpen ? "−" : "+"}</span>
+                </button>
+                {isOpen && (
+                  <div className="mbFaqAnswer">
+                    <p>{faq.a}</p>
+                  </div>
+                )}
               </div>
-              <div className="insightContent">
+            );
+          })}
+        </div>
+      </section>
+
+      {/* MARKET INSIGHTS & NEWS */}
+      <section className="mbInsightsSection">
+        <div className="mbSectionHeader">
+          <div className="mbSectionHeaderLeft">
+            <span className="mbSectionTag">Real Estate Insights & Knowledge</span>
+            <h2 className="mbSectionTitle">Market Trends & <span>Legal Guidelines</span></h2>
+            <p className="mbSectionDesc">Key infrastructure updates, master plan zoning, and government land policies.</p>
+          </div>
+          <Link to="/contact" className="mbHeaderLink">Consult Advisor →</Link>
+        </div>
+
+        <div className="mbInsightsGrid">
+          {marketInsights.map((insight) => (
+            <div className="mbInsightCard" key={insight.id}>
+              <div className="mbInsightImg">
+                <img src={insight.image} alt={insight.title} />
+                <span className="mbInsightBadge">{insight.date} • {insight.readTime}</span>
+              </div>
+              <div className="mbInsightBody">
                 <h3>{insight.title}</h3>
                 <p>{insight.desc}</p>
-                <Link to="/contact" className="readMoreLink">
-                  Consult With Our Analyst →
+                <Link to="/contact" className="mbInsightLink">
+                  Read Full Report & Consult →
                 </Link>
               </div>
             </div>
@@ -878,26 +1103,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA BANNER */}
-      <section className="cta">
-        <div>
-          <p>READY TO SECURE YOUR DREAM LAND?</p>
-          <h2>
-            Your High-Growth Property
-            <span> Starts Here.</span>
-          </h2>
-          <p style={{ color: "#6B7280", marginTop: "10px", maxWidth: "600px" }}>
-            Book a complimentary site visit with our senior land consultants. Free pickup available in Jaipur and Gurgaon.
-          </p>
-        </div>
+      {/* MAGICBRICKS CTA BANNER */}
+      <section className="mbCtaSection">
+        <div className="mbCtaContainer">
+          <div className="mbCtaText">
+            <span className="mbCtaPreTag">Looking For Your Dream Plot?</span>
+            <h2>Your Secure Investment <span>Starts Right Here</span></h2>
+            <p>Schedule a guided on-site visit to 100% JDA/RERA approved townships with Raju Verma ji & senior team. Complimentary AC cab family pickup available across Jaipur, Bhiwadi & Ajmer.</p>
+          </div>
 
-        <div className="ctaButtons">
-          <Link to="/contact" className="goldBtn">
-            Book Site Visit Today →
-          </Link>
-          <a href="tel:+919876543210" className="outlineBtn">
-            Call: +91 98765 43210
-          </a>
+          <div className="mbCtaButtons">
+            <Link to="/contact" className="mbPrimaryGoldBtn large">
+              🚗 Book Free Site Visit →
+            </Link>
+            <a href="tel:+919876543210" className="mbCtaCallBtn">
+              📞 Call Now: +91 98765 43210
+            </a>
+          </div>
         </div>
       </section>
     </div>
